@@ -1,0 +1,48 @@
+:root{
+    --background: linear-gradient(135deg, #16a7b183 0%, #0fa34865 100%); 
+    --color-primary: #B3C890;
+    --color-secondary:  #73A9AD;
+    --botton-padding: 20px 40px;
+}
+*{
+    color: white;
+}
+.hero2{
+    background-image: none;
+    padding-bottom: 25px;
+}
+body{
+    background-image: var(--background), url('../img/paisaje2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+    font-family: 'Raleway', sans-serif
+}
+.subtitle{
+    font-size: 4rem;
+    color: white;
+    font-weight: bold;
+    
+}
+.container{
+    
+    background-color: rgba(31, 31, 31, 0.822);
+    border-radius: 15px;
+    box-shadow: 5px 5px 10px;
+    color: black;
+    max-width: 1500px;
+    
+}
+.org{
+    text-align: center;
+    
+}
+.mapaset{
+    
+    display: grid;
+    height: 550px;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+}

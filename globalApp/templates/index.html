@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artemisa</title>
+    <link rel="stylesheet" href="{% static '/CSS/normalize.css' %}">
+    <link rel="stylesheet" href="{% static '/CSS/style.css' %}">
+</head>
+
+<body>
+    <header class="hero">
+        <div class="container">
+            <nav class="nav">
+                <a href="https://www.instagram.com/" class="nav__items nav__items--cta button"> Contactanos</a>
+                <a href="#" class="nav__items button">Sobre Nosotros</a>
+                <a href="ArtemisaProyect" class="nav__items button">Proyecto</a>
+            </nav>
+
+            <section class="hero__container">
+                <div class="hero__texts">
+                    <img src=" {% static '/img/Logon en blanco.png' %}" class="logo">
+                    <h2 class="hero__subtitle"> Cuidando a los que no se pueden cuidar </h2>
+                    <a href="https://www.instagram.com/" class="hero__cta button">Contactanos</a>
+                </div>
+            </section>
+        </div>
+        <div class="hero__wave" style="overflow: hidden;"><svg viewBox="0 0 500 150" preserveAspectRatio="none"
+                style="height: 100%; width: 100%;">
+                <path d="M0.00,49.98 C150.00,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
+                    style="stroke: none; fill: #fff;"></path>
+            </svg></div>
+    </header>
+    
+    <main>
+        <section class="presentation container">
+            <h2 class="subtitle"> Somos Artemisa </h2>
+            <img src="{% static '/img/artemisa.jpg' %}" class="presentation__picture">
+            <p class="presentation__copy">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate, culpa
+                illo. Accusamus quod vero deserunt hic magnam laborum, id laudantium tempora dicta voluptatem animi
+                quibusdam iste numquam tempore ratione unde?</p>
+            <a href="https://www.instagram.com/" class="presentation__cta button">Contactanos ahora</a>
+        </section>
+        <section class="about container">
+
+            <div class="about__texts">
+
+                <h2 class="subtitle"> ¿Que podemos hacer?</h2>
+
+                <p class="about_paragrapg"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae quaerat
+                    commodi voluptatibus facere accusantium, vero ipsum molestiae, temporibus ducimus facilis vel sint
+                    corporis, id impedit voluptates ipsam. Recusandae, vitae tempore.</p>
+
+                <p class="about_paragrapg"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae quaerat
+                    commodi voluptatibus facere accusantium, vero ipsum molestiae, temporibus ducimus facilis vel sint
+                    corporis, id impedit voluptates ipsam. Recusandae, vitae tempore.</p>
+            </div>
+
+            <figure class="about__img">
+                <img src="{% static '/img/2203.i105.037.S.m005.c13.isometric forester illustration.jpg' %}" class="about__picture img">
+            </figure>
+
+            <figure class="about__img about__img--left">
+                <img src="{% static '/img/World.jpg' %}" class="about__picture img">
+            </figure>
+
+            <div class="about__texts">
+
+                <h2 class="subtitle"> Sobre Nosotros </h2>
+
+                <p class="about_paragrapg"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae quaerat
+                    commodi voluptatibus facere accusantium, vero ipsum molestiae, temporibus ducimus facilis vel sint
+                    corporis, id impedit voluptates ipsam. Recusandae, vitae tempore.</p>
+
+                <p class="about_paragrapg"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae quaerat
+                    commodi voluptatibus facere accusantium, vero ipsum molestiae, temporibus ducimus facilis vel sint
+                    corporis, id impedit voluptates ipsam. Recusandae, vitae tempore.</p>
+            </div>
+        </section>
+        
+    </main>
+    
+    <footer class="footer">
+        <div class = "container footer__grid">
+            <nav class = "nav nav--footer">
+                <a class = "nav__items nav__items--footer button" href="/">Inicio</a>
+                <a class = "nav__items nav__items--footer button" href="">Sobre Nosotros</a>
+                <a class = "nav__items nav__items--footer button" href=""></a>
+                <a class = "nav__items nav__items--footer button" href=""></a>
+            </nav>
+            
+        </div>
+    </footer>
+
+</body>
+
+</html>
