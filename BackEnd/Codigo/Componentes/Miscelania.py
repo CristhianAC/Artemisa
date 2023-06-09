@@ -12,7 +12,7 @@ class Miscelania (Componente):
     def generarResumenRegion (self, dataset):
         registro_anual = self.procesos.estadisticos.obtenerDiversidadAlpha(dataset)
         endemicas = self.procesos.estadisticos.obtenerConteoEspeciesEndemicas(dataset)
-        registros = list(registro_anual.keys())
+        registros = [year for year in registro_anual.keys() if type(year) == int]
         registros.sort()
 
         #Obtener información del último año de seguimiento
@@ -34,7 +34,19 @@ class Miscelania (Componente):
                     'variacion': [comp_registro, var_registro_S, var_registro_N, var_registro_Alfa, var_registro_end]}
         except:
             return {'seguimiento': [ult_registro, ult_registro_S, ult_registro_N, ult_registro_Alfa, ult_registro_end]}
-        
+    
+    def generarResumentTextualBreveRegion (self, dataset):
+        datos = self.generarResumenRegion(dataset)
+
+        resumen = f'''{dataset.ubicacion} :\n
+            Último registro : {datos['seguimiento'][0]}\n\t
+            Cantidad de Muestras : {datos['seguimiento'][2]}\n\t
+            Cantidad de Especies : {datos['seguimiento'][1]}\n\t
+            Índice de Shannon : {datos["seguimiento"][3]}\n\t
+            Cantidad de Especies Endémicas : {datos["seguimiento"][4]}'''
+
+        return resumen
+
     def generarResumenTextualRegion (self, dataset):
         datos = self.generarResumenRegion(dataset)
 

@@ -3,87 +3,214 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artemisa</title>
-    <link rel="stylesheet" href="{% static '/CSS/normalize.css' %}">
-    <link rel="stylesheet" href="{% static '/CSS/style.css' %}">
-    <link rel="stylesheet" href="{% static '/CSS/style2.css' %}">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Artemisa</title>
+        <link rel="stylesheet" href="{% static '/CSS/normalize.css' %}">
+        <link rel="stylesheet" href="{% static '/CSS/style.css' %}">
+        <link rel="stylesheet" href="{% static '/CSS/style2.css' %}">
 </head>
+
 <body>
-    <header class="hero2">
-        
-            
-            <nav class="navproyect">
-                <a href="/">
-                    <img src="{% static '/img/Logon en blanco.png' %}" class="nav__logo nav__items button">
-                </a>
-                
-                <a href="https://www.instagram.com/" class="nav__items nav__items--cta button"> Contactanos</a>
-                <a href="#" class="nav__items button">Sobre Nosotros</a>
-                <a href="ArtemisaProyect" class="nav__items button">Proyecto</a>
-                
-            </nav>
-        
-    </header>
-    <main>
-        <section class="container">
-            <div class = "org">
-                <h1 class="subtitle">Mapa</h1>
-            </divclassorg>
-            
-            <div class="mapaset">
-                <div class="mapa">
-                    <h2>Aqui va el mapa</h2>
+        <header class="hero2">
 
-                </div>
-                <div class= "tabla">
-                    {% block content %}
-                        {{  chart|safe  }}
-                    {% endblock content%}
-                </div>
-            </div>
 
-            <div class= "resumenes">
-                <div class = "resumenes__item">
-                    <h1>Testing</h1>
-                </div>
-                
-                <div class = "resumenes__item">
-                    <h1>Testing</h1>
-                </div>
-                <div class = "resumenes__item">
-                    <h1>Testing</h1>
-                </div>
-                <div class = "resumenes__item">
-                    <h1>Testing</h1>
-                </div>
-                <div class = "resumenes__item">
-                    <h1>Testing</h1>
-                </div>
-                <div class = "resumenes__item">
-                    <h1>Testing</h1>
-                </div>
-                <div class = "resumentes__item">
-                    <h1>Testing</h1>
-                </div>
-                <div class = "resumentes__item">
-                    <h1>Testing</h1>
-                </div>
-                <div class = "resumentes__item">
-                    <h1>Testing</h1>
-                </div>
-                <div class = "resumentes__item">
-                    <h1>Testing</h1>
-                </div>
-                <div class = "resumentes__item">
-                    <h1>Testing</h1>
-                </div>
-                <div class = "resumentes__item">
-                    <h1>Testing</h1>
-                </div>
-            </div>
-        </section>
-    </main>
+                <nav class="navproyect">
+                        <a href="/">
+                                <img src="{% static '/img/Logon en blanco.png' %}" class="nav__logo nav__items button">
+                        </a>
+
+                        <a href="https://www.instagram.com/" class="nav__items nav__items--cta button"> Contactanos</a>
+                        <a href="#" class="nav__items button">Sobre Nosotros</a>
+                        <a href="ArtemisaProyect" class="nav__items button">Proyecto</a>
+
+                </nav>
+
+        </header>
+        <main>
+                {% block content %}
+                <section class="container">
+                        <div class="org">
+                                <h1 class="subtitle">Mapa</h1>
+                                </divclassorg>
+
+                                <div class="mapaset">
+                                        <div class="mapa">
+                                                <h2>Aqui va el mapa</h2>
+
+                                        </div>
+                                        <div class="tabla">
+
+                                                {{ chart|safe }}
+
+                                        </div>
+                                </div>
+                                <h2>Resumen por dataset</h2>
+                                <div class="resumenes">
+                                        <div class="resumenes__item">
+
+
+
+                                                {{ res_dataset1|linebreaksbr }}
+
+                                        </div>
+
+                                        <div class="resumenes__item">
+
+
+
+                                                {{ res_dataset2|linebreaksbr }}
+
+                                        </div>
+                                        <div class="resumenes__item">
+
+
+
+                                                {{ res_dataset3|linebreaksbr }}
+
+                                        </div>
+                                        <div class="resumenes__item">
+
+
+
+                                                {{ res_dataset4|linebreaksbr }}
+
+                                        </div>
+                                        <div class="resumenes__item">
+
+
+
+                                                {{ res_dataset5|linebreaksbr }}
+
+                                        </div>
+                                        <div class="resumenes__item">
+
+
+
+                                                {{ res_dataset6|linebreaksbr }}
+
+                                        </div>
+                                        <div class="resumenes__item">
+
+
+
+                                                {{ res_dataset7|linebreaksbr }}
+
+                                        </div>
+
+                                        <div class="resumenes__item">
+
+
+
+                                                {{ res_dataset8|linebreaksbr }}
+
+                                        </div>
+                                        <div class="resumenes__item">
+
+
+
+                                                {{ res_dataset9|linebreaksbr }}
+
+                                        </div>
+                                        <div class="resumenes__item">
+
+
+
+                                                {{ res_dataset10|linebreaksbr }}
+
+                                        </div>
+                                        <div class="resumenes__item">
+
+                                                {{ res_dataset11|linebreaksbr }}
+
+                                        </div>
+                                        <div class="resumenes__item">
+
+
+
+                                                {{ res_dataset12|linebreaksbr }}
+
+                                        </div>
+                                </div>
+                                <div class="sectionlast">
+                                        <div class="titlediv">
+                                        <h1>Panel de visualizacion</h1>
+                                        </div>
+                                        <div class="unopordos">
+                                                <div class="cantespecies">
+                                                        {{ varCantEsp|safe }}
+                                                </div>
+                                                <div class="cantmuestras">
+                                                        {{ varContMuestra|safe }}
+
+                                                </div>
+                                        </div>
+                                        <div class="unoportres">
+                                                <div class="diversidadalpha">
+                                                        {{BiodivAlpha|safe }}
+                                                </div>
+                                                <div class="diversidadB">
+                                                        {{BiodivBeta|safe }}
+                                                </div>
+                                                <div class="cantende">
+                                                        {{varEspEnd|safe }}
+                                                </div>
+                                        </div>
+                                        <div class="titlediv">
+                                        <h2>Clasificacion Taxonomica</h2>
+                                        </div>
+                                        <div class="unopordos">
+                                                <div class="acum">
+                                                        {{acumEsp | safe}}
+                                                </div>
+
+                                                <div class="años">
+
+                                                </div>
+                                        </div>
+                                        <div class="mapa-taxonomica">
+                                                {{mapEspEnd|safe }}
+                                        </div>
+                                        <div class="titlediv">
+
+                                        
+                                        <h2>Distribucion de especies endemicas</h2>
+                                        </div>
+                                        <div class="unopordos">
+                                                <div class="muestras">
+
+                                                        {{varConteoEspEnd|safe }}
+                                                </div>
+                                                <div class="prop">
+                                                        {{propEspEnd|safe }}
+                                                </div>
+
+                                        </div>
+                                        <div class="titlediv">
+                                        <h2>Seguimiento de especies</h2>
+                                        </div>
+                                        <div class="search">
+
+                                        </div>
+                                        <div class="mapacalor">
+
+                                                {{mapMuestra|safe }}
+                                        </div>
+                                        <div class="unopordos">
+                                                <div class="rarefaccion">
+
+                                                </div>
+                                                <div class="var en distribucion">
+
+                                                </div>
+                                        </div>
+
+                                        <div class="conclusiones">
+                                                
+                                        </div>
+                                </div>
+                </section>
+                {% endblock %}
+        </main>
 </body>

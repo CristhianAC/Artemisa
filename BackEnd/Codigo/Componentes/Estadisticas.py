@@ -150,3 +150,6 @@ class Estadisticas (Componente):
     def unionConjuntos(self, set2):
         self.acum = self.acum.union(set2)
         return self.acum 
+    
+    def porcentajeVariacion (self, dato1, dato2):
+        return 100*(dato1 - dato2)/dato1

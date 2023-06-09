@@ -1,6 +1,7 @@
 import sqlite3, os
 import pandas as pd
-from .Codigo.Componentes.Dataset import Dataset
+import geopandas as gpd
+from Codigo.Componentes.Dataset import Dataset
 
 class ConversorSQL:
 
@@ -73,10 +74,7 @@ class ConversorSQL:
 
         return bases_datos
 
-    def convertirCSVaSQL (self, nombre, archivo, nombre_tabla, lista_indices):
-        data = pd.read_csv (archivo, header=0, sep='\t')   
-        df = pd.DataFrame(data)
-
+    def generarSQL (self, df, nombre, lista_indices, nombre_tabla):
         # Connect to SQL Server
         conn = sqlite3.connect(self.dir_carpeta + "/BaseDatos/" + nombre, check_same_thread=False)
         cursor = conn.cursor()
@@ -106,12 +104,19 @@ class ConversorSQL:
                             row
                             )
             conn.commit()
-        except:
+        except Exception as e:
             print(f"Tabla {nombre_tabla} ya existente")
+            print(f"An exception occurred: {str(e)}")
 
         print(f"\t-> Cargada Tabla \'{nombre_tabla}\'")
         return conn
     
+    def convertirCSVaSQL (self, nombre, archivo, nombre_tabla, lista_indices):
+        data = pd.read_csv (archivo, header=0, sep='\t')   
+        df = pd.DataFrame(data)
+
+        return self.generarSQL (df, nombre, lista_indices, nombre_tabla)
+
     def cargarEspeciesEndemicas (self):
         lista_archivos = os.listdir(self.dir_carpeta + "/EspeciesEndemicas")
         bases_datos = []
@@ -155,5 +160,55 @@ class ConversorSQL:
             nuevo_bd = Dataset(conn, nombre_bd, nombre_tabla)
 
             bases_datos.append(nuevo_bd)
+
+        return bases_datos
+    
+    def cargarPeligroExtincion (self):
+        lista_archivos = os.listdir(self.dir_carpeta + "/PeligroExtincion")
+        bases_datos = []
+
+        lista_indices = ['datos_ind INTEGER PRIMARY KEY',
+                         'id_no INTEGER', 
+                         'specie TEXT', 
+                         'presence TEXT', 
+                         'origin TEXT', 
+                         'seasonal TEXT', 
+                         'compiler TEXT',
+                         'yrcompiled TEXT', 
+                         'citation TEXT', 
+                         'subspecies TEXT', 
+                         'subpop TEXT', 
+                         'source TEXT', 
+                         'island TEXT',
+                         'tax_comm TEXT', 
+                         'dist_comm TEXT', 
+                         'generalisd TEXT', 
+                         'legend TEXT', 
+                         'kingdom TEXT', 
+                         'phylum TEXT',
+                         'class TEXT', 
+                         'order_ TEXT', 
+                         'family TEXT', 
+                         'genus TEXT', 
+                         'category TEXT', 
+                         'marine TEXT',
+                         'terrestial TEXT', 
+                         'freshwater TEXT', 
+                         'SHAPE_Leng TEXT', 
+                         'SHAPE_Area TEXT', 
+                        ]
+                
+        for nombre_archivo in lista_archivos:
+            if (nombre_archivo.split(".")[1] == "shp"):
+                archivo_shp = gpd.read_file(self.dir_carpeta + "/PeligroExtincion/" + nombre_archivo)
+                archivo_shp.drop(columns=["geometry"], inplace=True)
+                print(archivo_shp)
+
+                nombre_bd = f"EspExt-{len(bases_datos)+1}.bd"
+                nombre_tabla = f"EspExt_{len(bases_datos)+1}"
+                conn = self.generarSQL(archivo_shp, nombre_bd, lista_indices, nombre_archivo.split(".")[0])
+                nuevo_bd = Dataset(conn, nombre_bd, nombre_tabla)
+
+                bases_datos.append(nuevo_bd)
 
         return bases_datos

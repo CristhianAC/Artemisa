@@ -6,6 +6,12 @@
 }
 *{
     color: white;
+    
+}
+
+h1 h2{
+    font-weight: bolder;
+    
 }
 .hero2{
     background-image: none;
@@ -40,20 +46,63 @@ body{
     
 }
 .mapaset{
-    padding-right: 10px;
+    padding: 10px;
     display: grid;
     height: 550px;
     grid-template-columns: 1fr 1fr;
     gap: 50px;
 }
 .resumenes{
-    padding-right: 10px;
+    
     display: grid;
-    height: 2000px;
+    height: 1500px;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(4,1fr);
-    gap: 50px;
+    gap: 100px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
 }
 .tabla{
     border-radius: 45px;
+}
+.unopordos{
+    padding: 10px;
+    display: grid;
+    height: 500px;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    
+}
+.resumenes__item{
+    background-color: #0fa3489c;
+    border-radius: 20px;
+    padding: 14px;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 5px 5px 10px;
+    
+    
+}
+.unoportres{
+    
+    display: grid;
+    height: 500px;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 100px 0;
+    
+}
+
+.titlediv{
+    padding: 45px;
+    
+    border-radius: 15px;
+    background-color: #0fa3489c;
+    box-shadow: 5px 5px 10px;
+    color: black;
+}
+
+.subtitlediv{
+    padding: 45px;
 }

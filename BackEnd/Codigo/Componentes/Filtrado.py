@@ -62,3 +62,15 @@ class Filtrado:
             where += ") AND "
 
         return where
+
+    def especiesPeligroExtincion (self, dataset, dt_endemicos, condicionales: Optional[dict] = {}):
+        df_filtrado = pd.DataFrame()
+
+        for dataset_end in dt_endemicos:
+            df1 = pd.read_sql(self.generarCriterioBusqueda(dataset.nombre_tabla, {'*': []}, condicionales), con=dataset.base_datos)
+            df2 = pd.read_sql(self.generarCriterioBusqueda(dataset_end.nombre_tabla, {'species':[], 'Cat':[]}, {}), con=dataset_end.base_datos)
+
+            df_convergencia = pd.merge(df1, df2, how='inner', on=['species', 'species'])
+            df_filtrado = pd.concat([df_filtrado, df_convergencia])
+
+        return df_filtrado

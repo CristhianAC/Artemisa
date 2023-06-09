@@ -5,3 +5,7 @@ class Dataset:
         self.nombre_archivo = nombre_archivo
         self.nombre_tabla = nombre_tabla
         self.ubicacion = "ubicacion"
+        self.context = {}
+
+    def cargarGraficas (self, context):
+        self.context = context

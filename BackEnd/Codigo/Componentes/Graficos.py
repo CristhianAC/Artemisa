@@ -21,7 +21,13 @@ class Graficos (Componente):
         df = df.sort_values(by="year")
 
         print(df)
-        fig = px.line(df, x="year", y="S", title="Cantidad Especies Registradas por Año", markers=True) 
+        fig = px.line(df, x="year", y="S", title="Cantidad Especies Registradas por Año", markers=True, color_discrete_sequence=["darkgreen", "green", "lawngreen", "blue", "steelblue"]) 
+        fig.update_layout(paper_bgcolor="rgb(15,163,72,0)", 
+                          font=dict(
+                                    family="Courier New, monospace",
+                                    size=18,
+                                    color="White"
+                            ))
         return fig
 
     def temporalVariacionConteoMuestras (self, dataset):
@@ -33,11 +39,14 @@ class Graficos (Componente):
         df = df.sort_values(by="year")
 
         print(df)
-        fig = px.line(df, x="year", y="N", title="Cantidad Especies Registradas por Año", markers=True) 
+        fig = px.line(df, x="year", y="N", title="Cantidad Muestras Registradas por Año", markers=True, color_discrete_sequence=["green", "lawngreen", "blue", "steelblue"]) 
+        fig.update_layout(paper_bgcolor="rgb(15,163,72,0)", 
+                          font=dict(
+                                    family="Courier New, monospace",
+                                    size=18,
+                                    color="White"
+                            ))
         return fig
-
-    def temporalVariacionDistribucionEspecies (self, intervalo):
-        pass
 
     def temporalBiodiversidadAlpha (self, dataset):
         datos = self.procesos.estadisticos.obtenerDiversidadAlpha(dataset)
@@ -50,7 +59,17 @@ class Graficos (Componente):
         df = df.sort_values(by="year")
         print(df)
 
-        fig = px.line(df, x="year", y=["Simpson","Menhinick", "Shannon"], title="Índices de medición de Biodiversidad Alfa", markers=True) 
+        fig = px.line(df, x="year", y=["Simpson","Menhinick", "Shannon"], title="Índices de medición de Biodiversidad Alfa", markers=True, color_discrete_sequence=["darkgreen", "blue", "steelblue"], width=600)
+        fig.update_layout(paper_bgcolor="rgb(15,163,72,0)", 
+                          font=dict(
+                                    family="Courier New, monospace",
+                                    size=12,
+                                    color="White"),
+                          legend=dict(
+                            yanchor="top",
+                            y=0.99,
+                            xanchor="left",
+                            x=0.01))    
         return fig
 
     def temporalBiodiversidadBeta (self, dataset):
@@ -62,7 +81,17 @@ class Graficos (Componente):
         df = df.sort_values(by="year")
         print(df)
 
-        fig = px.bar(df, x="year", y=["BrayCurtis"], title="Índice de Bray-Curtis en relación a la última medición") 
+        fig = px.bar(df, x="year", y=["BrayCurtis"], title="Índice de Bray-Curtis en relación a la última medición", color_discrete_sequence=["blue", "steelblue"], width=600) 
+        fig.update_layout(paper_bgcolor="rgb(15,163,72,0)", 
+                          font=dict(
+                            family="Courier New, monospace",
+                            size=12,
+                            color="White"),
+                          legend=dict(
+                            yanchor="top",
+                            y=0.99,
+                            xanchor="left",
+                            x=0.01))
         return fig
 
     def variacionEspeciesEndemicas (self, dataset):
@@ -77,7 +106,18 @@ class Graficos (Componente):
         df = df.sort_values(by="year")
 
         print(df)
-        fig = px.line(df, x="year", y="S", title="Cantidad Especies Endémicas Registradas por Año", markers=True) 
+        fig = px.line(df, x="year", y="S", title="Cantidad Especies Endémicas Registradas por Año", markers=True, color_discrete_sequence=["darkgreen", "green", "lawngreen", "blue", "steelblue"], width=600) 
+        fig.update_layout(paper_bgcolor="rgb(15,163,72,0)", 
+                          font=dict(
+                                    family="Courier New, monospace",
+                                    size=12,
+                                    color="White"
+                            ),
+                          legend=dict(
+                            yanchor="top",
+                            y=0.99,
+                            xanchor="left",
+                            x=0.01))
         return fig  
 
     def variacionConteoEspeciesEndemicas(self, dataset):
@@ -104,6 +144,12 @@ class Graficos (Componente):
 
         # Here we modify the tickangle of the xaxis, resulting in rotated labels.
         fig.update_layout(barmode='group', xaxis_tickangle=-45)
+        fig.update_layout(paper_bgcolor="rgb(15,163,72,0)", 
+                          font=dict(
+                                    family="Courier New, monospace",
+                                    size=12,
+                                    color="White"
+                            ))
         return fig
 
     def proporcionEspeciesEndemicas (self, dataset):
@@ -115,11 +161,14 @@ class Graficos (Componente):
             year = [year for year in endemicas_anual.keys() for categoria in endemicas_anual[year]['species'].keys()],
         ))
 
-        fig = px.sunburst(df, path=['year', 'cat'], values='cant')
+        fig = px.sunburst(df, path=['year', 'cat'], values='cant', color_discrete_sequence=["blue", "green", "lawngreen", "blue", "steelblue"])
+        fig.update_layout(paper_bgcolor="rgb(15,163,72,0)", 
+                          font=dict(
+                                    family="Courier New, monospace",
+                                    size=18,
+                                    color="White"
+                            ))
         return fig
-
-    def proporcionCategoriasTaxonomicas (self, dataset):
-        pass
 
     def curvaAcumulacionEspecies (self, dataset):
         datos = self.procesos.estadisticos.calcularCurvaAcumulacion(dataset)
@@ -131,5 +180,14 @@ class Graficos (Componente):
             N = [datos[year]['N'][month] for year in datos.keys() for month in range(12)]
         ))
 
-        fig = px.line(df, x="month", y=["S","S_acum"], title="Curva de Acumulación de Especies", markers=True) 
+        fig = px.line(df, x="month", y=["S","S_acum"], title="Curva de Acumulación de Especies", markers=True, color_discrete_sequence=["lawngreen", "steelblue"])
+        fig.update_layout(paper_bgcolor="rgb(15,163,72,0)", 
+                          font=dict(
+                                    family="Courier New, monospace",
+                                    size=18,
+                                    color="White"
+                            ))
         return fig
+
+    def variacionConteoEspecie (self, dataset):
+        pass
