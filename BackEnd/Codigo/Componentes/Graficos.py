@@ -22,7 +22,7 @@ class Graficos (Componente):
 
         print(df)
         fig = px.line(df, x="year", y="S", title="Cantidad Especies Registradas por Año", markers=True) 
-        fig.show()
+        return fig
 
     def temporalVariacionConteoMuestras (self, dataset):
         datos = self.procesos.estadisticos.obtenerInfoAnual(dataset)
@@ -34,7 +34,7 @@ class Graficos (Componente):
 
         print(df)
         fig = px.line(df, x="year", y="N", title="Cantidad Especies Registradas por Año", markers=True) 
-        fig.show()
+        return fig
 
     def temporalVariacionDistribucionEspecies (self, intervalo):
         pass
@@ -51,7 +51,7 @@ class Graficos (Componente):
         print(df)
 
         fig = px.line(df, x="year", y=["Simpson","Menhinick", "Shannon"], title="Índices de medición de Biodiversidad Alfa", markers=True) 
-        fig.show()
+        return fig
 
     def temporalBiodiversidadBeta (self, dataset):
         datos = self.procesos.estadisticos.obtenerDiversidadBeta(dataset)
@@ -63,7 +63,7 @@ class Graficos (Componente):
         print(df)
 
         fig = px.bar(df, x="year", y=["BrayCurtis"], title="Índice de Bray-Curtis en relación a la última medición") 
-        fig.show()
+        return fig
 
     def variacionEspeciesEndemicas (self, dataset):
         endemicas_anual = self.procesos.estadisticos.obtenerConteoEspeciesEndemicas(dataset)
@@ -78,7 +78,7 @@ class Graficos (Componente):
 
         print(df)
         fig = px.line(df, x="year", y="S", title="Cantidad Especies Endémicas Registradas por Año", markers=True) 
-        fig.show()  
+        return fig  
 
     def variacionConteoEspeciesEndemicas(self, dataset):
         endemicas_anual = self.procesos.estadisticos.obtenerConteoEspeciesEndemicas(dataset)
@@ -104,7 +104,7 @@ class Graficos (Componente):
 
         # Here we modify the tickangle of the xaxis, resulting in rotated labels.
         fig.update_layout(barmode='group', xaxis_tickangle=-45)
-        fig.show()
+        return fig
 
     def proporcionEspeciesEndemicas (self, dataset):
         endemicas_anual = self.procesos.estadisticos.obtenerConteoEspeciesEndemicas(dataset, 'Cat')
@@ -116,7 +116,7 @@ class Graficos (Componente):
         ))
 
         fig = px.sunburst(df, path=['year', 'cat'], values='cant')
-        fig.show()
+        return fig
 
     def proporcionCategoriasTaxonomicas (self, dataset):
         pass
@@ -132,4 +132,4 @@ class Graficos (Componente):
         ))
 
         fig = px.line(df, x="month", y=["S","S_acum"], title="Curva de Acumulación de Especies", markers=True) 
-        fig.show()
+        return fig

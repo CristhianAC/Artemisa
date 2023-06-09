@@ -1,10 +1,10 @@
-from Codigo.Componentes.Cartografia import Cartografia
-from Codigo.Componentes.Estadisticas import Estadisticas
-from Codigo.Componentes.Filtrado import Filtrado
-from Codigo.Componentes.Graficos import Graficos
-from Codigo.Componentes.Miscelania import Miscelania
-from ConversorSQL import ConversorSQL
-from Codigo.Componentes.Constantes import Constantes
+from .Codigo.Componentes.Cartografia import Cartografia
+from .Codigo.Componentes.Estadisticas import Estadisticas
+from .Codigo.Componentes.Filtrado import Filtrado
+from .Codigo.Componentes.Graficos import Graficos
+from .Codigo.Componentes.Miscelania import Miscelania
+from .ConversorSQL import ConversorSQL
+from .Codigo.Componentes.Constantes import Constantes
 
 import pandas as pd
 import sqlite3, os
@@ -18,7 +18,7 @@ class Procesos:
         self.filtrado = Filtrado()
         self.graficos = Graficos(self)
         self.miscelania = Miscelania(self)
-        self.conversor = ConversorSQL('/home/Maldonado/Artemisa')
+        self.conversor = ConversorSQL('/home/Maldonado/Artemisa_Web/Artemisa/BackEnd')
 
         #Descargar Bases de Datos
 

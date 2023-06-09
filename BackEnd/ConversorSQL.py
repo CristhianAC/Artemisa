@@ -1,6 +1,6 @@
 import sqlite3, os
 import pandas as pd
-from Codigo.Componentes.Dataset import Dataset
+from .Codigo.Componentes.Dataset import Dataset
 
 class ConversorSQL:
 
@@ -78,7 +78,7 @@ class ConversorSQL:
         df = pd.DataFrame(data)
 
         # Connect to SQL Server
-        conn = sqlite3.connect(self.dir_carpeta + "/BaseDatos/" + nombre)
+        conn = sqlite3.connect(self.dir_carpeta + "/BaseDatos/" + nombre, check_same_thread=False)
         cursor = conn.cursor()
 
         # Crear Tabla
