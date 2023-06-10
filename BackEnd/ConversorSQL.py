@@ -1,7 +1,7 @@
 import sqlite3, os
 import pandas as pd
 import geopandas as gpd
-from Codigo.Componentes.Dataset import Dataset
+from .Codigo.Componentes.Dataset import Dataset
 
 class ConversorSQL:
 
