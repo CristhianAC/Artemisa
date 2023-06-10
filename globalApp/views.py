@@ -14,10 +14,10 @@ def proyect(request):
         context["search"] = Searching
         return render(request, "proyect.html", context)
     else:
-        if request.POST['dataset'] is not None:
-            context = procesos.obternerHTML(int(request.POST['dataset']))
-        if request.POSTes['texto'] is not None:
-            context = procesos.solicitarInfoEspecie(request.POSTes['texto'])
+        
+        context = procesos.obternerHTML(int(request.POST['dataset']))
+        
+        
         context["formDs"] = ButtonSelector
         context["search"] = Searching
         return render(request, "proyect.html", context)
