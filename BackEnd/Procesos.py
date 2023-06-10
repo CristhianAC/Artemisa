@@ -88,6 +88,7 @@ class Procesos:
                 "varEspEnd": self.graficos.variacionEspeciesEndemicas(db).to_html(),
                 "propEspEnd": self.graficos.proporcionEspeciesEndemicas(db).to_html(),
                 "acumEsp": self.graficos.curvaAcumulacionEspecies(db).to_html(),
+                "varEspecie": self.graficos.variacionConteoEspecie(db, "Spondias mombin").to_html(),
                 
                 #Mapas
                 "mapEspEnd": self.cartoficos.generarMapaDistribucionEndemicas(db).to_html(),
