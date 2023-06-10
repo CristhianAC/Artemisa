@@ -8,6 +8,9 @@ procesos = Procesos()
 def index(request):
     return render(request,"index.html")
 def proyect(request):
-    context = procesos.context
-    context["formDs"] = ButtonSelector
-    return render(request, "proyect.html", context)
+    if request.method == 'GET':
+        context = procesos.context
+        context["formDs"] = ButtonSelector
+        return render(request, "proyect.html", context)
+    else:
+        
