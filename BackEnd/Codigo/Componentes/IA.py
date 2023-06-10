@@ -9,7 +9,7 @@ class Openaai:
 
     def generarConclusion (self, db):
         structure = [
-            {"role" : "user", "content": self.miscelanea.generarResumenTextualRegion(db)},
+            {"role" : "user", "content": self.miscelania.generarResumenTextualRegion(db)},
         ]
         response = openai.ChatCompletion.create(
             model = "gpt-3.5-turbo",

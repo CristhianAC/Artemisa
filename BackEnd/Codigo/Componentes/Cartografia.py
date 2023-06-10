@@ -25,7 +25,6 @@ class Cartografia (Componente):
         token = 'pk.eyJ1Ijoic2ViYXN0aWFubWFsZG9uYWRvMTk0NSIsImEiOiJjbGluYnRobHkwbDQyM2xwOGc4aGN5ZnpvIn0.Jal1X7da0VhVK8gkKrWBng'
         fig = go.Figure(go.Scattermapbox(
             mode = "markers+text",
-            width = 500,
             lon = ubicaciones['latitude'], lat = ubicaciones['longitude'],
             marker = {'size': 20, 'symbol': ["park" for i in ubicaciones['ubicacion']]},
             text = ubicaciones['ubicacion'],textposition = "bottom right"))
@@ -80,7 +79,7 @@ class Cartografia (Componente):
         try:
             pos = (list(df['latitude'])[0], list(df['longitude'])[0])
         except:
-            pos (0, 0)
+            pos = (0, 0)
         
         fig = px.density_mapbox(df, lat = 'latitude', lon = 'longitude', z = 'conteo',
                                 radius = 10,

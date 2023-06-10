@@ -13,4 +13,4 @@ def proyect(request):
         context["formDs"] = ButtonSelector
         return render(request, "proyect.html", context)
     else:
-        
+        pass
