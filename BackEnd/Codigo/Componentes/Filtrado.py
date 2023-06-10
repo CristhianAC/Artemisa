@@ -68,8 +68,8 @@ class Filtrado:
 
         for dataset_pe in dt_pel_ext:
             df1 = pd.read_sql(self.generarCriterioBusqueda(dataset.nombre_tabla, {'*': []}, condicionales), con=dataset.base_datos)
-            df2 = pd.read_sql(self.generarCriterioBusqueda(dataset_pe.nombre_tabla, {'*':[]}, {}), con=dataset_pe.base_datos)
-            print(df2.keys())
+            df2 = pd.read_sql(self.generarCriterioBusqueda(dataset_pe.nombre_tabla, {'specie': [], 'category': []}, {}), con=dataset_pe.base_datos)
+            df2 = df2.rename(columns={"specie": "species"})
 
             df_convergencia = pd.merge(df1, df2, how='inner', on=['species', 'species'])
             df_filtrado = pd.concat([df_filtrado, df_convergencia])

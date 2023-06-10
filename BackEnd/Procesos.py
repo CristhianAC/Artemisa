@@ -1,11 +1,11 @@
-from .Codigo.Componentes.Cartografia import Cartografia
-from .Codigo.Componentes.Estadisticas import Estadisticas
-from .Codigo.Componentes.Filtrado import Filtrado
-from .Codigo.Componentes.Graficos import Graficos
-from .Codigo.Componentes.Miscelania import Miscelania
-from .Codigo.Componentes.IA import Openaai
-from .ConversorSQL import ConversorSQL
-from .Codigo.Componentes.Constantes import Constantes
+from Codigo.Componentes.Cartografia import Cartografia
+from Codigo.Componentes.Estadisticas import Estadisticas
+from Codigo.Componentes.Filtrado import Filtrado
+from Codigo.Componentes.Graficos import Graficos
+from Codigo.Componentes.Miscelania import Miscelania
+from Codigo.Componentes.IA import Openaai
+from ConversorSQL import ConversorSQL
+from Codigo.Componentes.Constantes import Constantes
 import os
 
 import pandas as pd
@@ -32,7 +32,7 @@ class Procesos:
         self.dataset = self.datasets[2]
 
         #Generar Resúmenes
-        res = [self.miscelania.generarResumentTextualBreveRegion(self.datasets[0]),
+        '''res = [self.miscelania.generarResumentTextualBreveRegion(self.datasets[0]),
                 self.miscelania.generarResumentTextualBreveRegion(self.datasets[1]),
                 self.miscelania.generarResumentTextualBreveRegion(self.datasets[2]),
                 self.miscelania.generarResumentTextualBreveRegion(self.datasets[3]),
@@ -82,7 +82,7 @@ class Procesos:
                 "res_dataset10": res[9],
                 "res_dataset11": res[10],
                 "res_dataset12": res[11]}
-            )
+            )'''
 
         #Cargar Gráficas
         db = self.dataset
@@ -129,3 +129,8 @@ class Procesos:
         self.context['varEspecie'] = self.cartoficos.generarMapaLocalizacionMuestras(self.dataset, especie).to_html()
 
         return self.context
+
+procesos = Procesos()
+db = procesos.datasets[2]
+procesos.graficos.proporcionEspeciesPeligroExtincion(db).show()
+#print(df)

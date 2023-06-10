@@ -57,7 +57,7 @@ class Estadisticas (Componente):
 
     def obtenerConteoEspeciesPeligroExtincion (self, dataset, criterio: Optional[str] = 'species'):
         datos = self.procesos.estadisticos.obtenerInfoAnual(dataset)
-        endemicas_anual = {year: {'species':  self.obtenerConteoRangoTaxonomico(self.procesos.filtrado.especiesEndemicas(dataset, self.procesos.endemicas, condicionales={'year': [year]}), rango=criterio)} for year in datos.keys()}
+        endemicas_anual = {year: {'species':  self.obtenerConteoRangoTaxonomico(self.procesos.filtrado.especiesPeligroExtincion(dataset, self.procesos.peligro_extincion, condicionales={'year': [year]}), rango=criterio)} for year in datos.keys()}
         for year in endemicas_anual.keys():
             endemicas_anual[year]['S'] = len(endemicas_anual[year]['species'].keys())
 
@@ -98,12 +98,10 @@ class Estadisticas (Componente):
     
     def obtenerDiversidadBeta (self, dataset):
         conteos_especies = self.obtenerInfoAnual(dataset)
-        registros = [year for year in list(conteos_especies.keys())]
+        registros = [year for year in list(conteos_especies.keys()) if (type(year) == int)]
         registros.sort()
 
         diversidad_anual = {year: {} for year in registros[:-1]}
-        proporcion = self.obtenerProporcionesEspecies(dataset)
-
         ult_conteo = conteos_especies[registros[-1]]['Especies']
 
         for year in registros[:-1]:

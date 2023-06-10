@@ -1,7 +1,7 @@
 import sqlite3, os
 import pandas as pd
 import geopandas as gpd
-from .Codigo.Componentes.Dataset import Dataset
+from Codigo.Componentes.Dataset import Dataset
 
 class ConversorSQL:
 
@@ -199,14 +199,12 @@ class ConversorSQL:
                         ]
                 
         for nombre_archivo in lista_archivos:
+            print(nombre_archivo)
             if (nombre_archivo.split("-")[0] == "EspExt"):
-                archivo_shp = gpd.read_file(self.dir_carpeta + "/PeligroExtincion/" + nombre_archivo)
-                archivo_shp.drop(columns=["geometry"], inplace=True)
-                print(archivo_shp)
-
-                nombre_bd = f"EspExt-{len(bases_datos)+1}.bd"
-                nombre_tabla = f"EspExt_{len(bases_datos)+1}"
-                conn = self.generarSQL(archivo_shp, nombre_bd, lista_indices, nombre_archivo.split(".")[0])
+                nombre = nombre_archivo.split("-")[1].split(".")[0]
+                nombre_bd = f'EspExt-{nombre}.bd'
+                nombre_tabla = f'EspExt_{nombre}'
+                conn = self.generarSQL(None, nombre_bd, lista_indices, nombre_tabla)
                 nuevo_bd = Dataset(conn, nombre_bd, nombre_tabla)
 
                 bases_datos.append(nuevo_bd)
