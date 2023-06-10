@@ -49,7 +49,7 @@ body{
     padding: 10px;
     display: grid;
     height: 550px;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
     gap: 50px;
 }
 .resumenes{

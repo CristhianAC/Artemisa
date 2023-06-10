@@ -37,7 +37,7 @@
 
                                 <div class="mapaset">
                                         <div class="mapa">
-                                                <h2>Aqui va el mapa</h2>
+                                                {{ mapRegiones|safe }}
 
                                         </div>
                                         <div class="tabla">
@@ -156,16 +156,17 @@
                                                 
                                         </div>
                                         <div>
-                                                <div class="cantende">
-                                                        {{varEspEnd|safe }}
+                                                <div class="acum">
+                                                        {{acumEsp | safe}}
+                                                        
                                                 </div>
                                         </div>
                                         <div class="titlediv">
                                         <h2>Clasificacion Taxonomica</h2>
                                         </div>
                                         <div class="unopordos">
-                                                <div class="acum">
-                                                        {{acumEsp | safe}}
+                                                <div class="cantende" >
+                                                        {{varEspEnd|safe }}
                                                 </div>
 
                                                 <div class="años">
