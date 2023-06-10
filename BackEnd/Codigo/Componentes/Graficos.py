@@ -221,28 +221,6 @@ class Graficos (Componente):
                                     color="White"
                             ))
         return fig
-
-    def conteoEspeciesPeligroExtincion (self, dataset):
-        #peligro_ext_anual = self.procesos.estadisticos.obtenerConteoEspeciesPeligroExtincion(dataset, 'category')
-        esp_peligro_ext_anual = self.procesos.estadisticos.obtenerConteoEspeciesPeligroExtincion(dataset)
-        cat_por_especie = self.procesos.filtrado.especiesPeligroExtincion(dataset, self.procesos.peligro_extinsion)
-        print(cat_por_especie)
-
-        df = pd.DataFrame(dict(
-            cant = [esp_peligro_ext_anual[year][specie] for year in esp_peligro_ext_anual.keys() for specie in esp_peligro_ext_anual[year].keys()],
-            esp = [specie for year in esp_peligro_ext_anual.keys() for specie in esp_peligro_ext_anual[year].keys()],
-            cat = [year for year in esp_peligro_ext_anual.keys() for specie in esp_peligro_ext_anual[year].keys()],
-            year = [year for year in esp_peligro_ext_anual.keys() for specie in esp_peligro_ext_anual[year].keys()],
-        ))
-
-        fig = px.sunburst(df, path=['year', 'cat', 'esp'], values='cant', color_discrete_sequence=["lawngreen", "blue", "steelblue"])
-        fig.update_layout(paper_bgcolor="rgb(15,163,72,0)", 
-                          font=dict(
-                                    family="Courier New, monospace",
-                                    size=18,
-                                    color="White"
-                            ))
-        return fig
     
     def proporcionEspeciesPeligroExtincion (self, dataset):
         peligro_ext_anual = self.procesos.estadisticos.obtenerConteoEspeciesPeligroExtincion(dataset, 'category')
