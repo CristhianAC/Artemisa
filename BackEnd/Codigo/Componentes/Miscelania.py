@@ -78,6 +78,7 @@ class Miscelania (Componente):
 
         return respuesta
 
+    @app.route('/')
     def mostrar_imagen_especie_colombia(self, specie, db):
         datos = self.procesos.filtrado.filtrarDataSet({'species': [], 'speciesKey': []}, db)
         llaves = {dato[0]: dato[1] for dato in datos}

@@ -1,10 +1,10 @@
-from Codigo.Componentes.Cartografia import Cartografia
-from Codigo.Componentes.Estadisticas import Estadisticas
-from Codigo.Componentes.Filtrado import Filtrado
-from Codigo.Componentes.Graficos import Graficos
-from Codigo.Componentes.Miscelania import Miscelania
-from ConversorSQL import ConversorSQL
-from Codigo.Componentes.Constantes import Constantes
+from .Codigo.Componentes.Cartografia import Cartografia
+from .Codigo.Componentes.Estadisticas import Estadisticas
+from .Codigo.Componentes.Filtrado import Filtrado
+from .Codigo.Componentes.Graficos import Graficos
+from .Codigo.Componentes.Miscelania import Miscelania
+from .ConversorSQL import ConversorSQL
+from .Codigo.Componentes.Constantes import Constantes
 import os
 
 import pandas as pd
