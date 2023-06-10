@@ -42,11 +42,12 @@
 
                                         </div>
                                         <div class="form">
-
-                                                {{formDs.as_p}}
-                                                <button>
-                                                        Accept
-                                                </button>
+                                                <form method="POST">
+                                                        {{formDs.as_p}}
+                                                        <button>
+                                                                Accept
+                                                        </button>
+                                                </form>
 
                                         </div>
                                 </div>
@@ -139,7 +140,7 @@
                                 </div>
                                 <div class="sectionlast">
                                         <div class="titlediv">
-                                        <h1>Panel de visualizacion</h1>
+                                                <h1>Panel de visualizacion</h1>
                                         </div>
                                         <div class="unopordos">
                                                 <div class="cantespecies">
@@ -157,19 +158,19 @@
                                                 <div class="diversidadB">
                                                         {{BiodivBeta|safe }}
                                                 </div>
-                                                
+
                                         </div>
                                         <div>
                                                 <div class="acum">
                                                         {{acumEsp | safe}}
-                                                        
+
                                                 </div>
                                         </div>
                                         <div class="titlediv">
-                                        <h2>Clasificacion Taxonomica</h2>
+                                                <h2>Clasificacion Taxonomica</h2>
                                         </div>
                                         <div class="unopordos">
-                                                <div class="cantende" >
+                                                <div class="cantende">
                                                         {{varEspEnd|safe }}
                                                 </div>
 
@@ -182,8 +183,8 @@
                                         </div>
                                         <div class="titlediv">
 
-                                        
-                                        <h2>Distribucion de especies endemicas</h2>
+
+                                                <h2>Distribucion de especies endemicas</h2>
                                         </div>
                                         <div class="unopordos">
                                                 <div class="muestras">
@@ -196,7 +197,7 @@
 
                                         </div>
                                         <div class="titlediv">
-                                        <h2>Seguimiento de especies</h2>
+                                                <h2>Seguimiento de especies</h2>
                                         </div>
                                         <div class="search">
 
@@ -210,7 +211,7 @@
                                                         {{ varEspecie|safe }}
                                                 </div>
                                                 <div class="var en distribucion">
-                                                        
+
                                                 </div>
                                         </div>
 

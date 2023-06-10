@@ -17,5 +17,4 @@ class Openaai:
             frequency_penalty = 0,
             presence_penalty = 0
         )
-        print(response['choices'][0]['message']['content'])
-openaiii = Openaai()
+        return response['choices'][0]['message']['content']

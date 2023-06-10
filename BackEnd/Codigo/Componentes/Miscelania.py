@@ -73,10 +73,12 @@ class Miscelania (Componente):
                             {datos['variacion'][4]} eran de especies endémicas, casi endémicas o amenazadas, lo que supone 
                             una varición de {datos['variacion'][4] - datos['seguimiento'][4]} especies de este tipo reportadas,
                             sacame conclusiones al respecto.
+                            \n \n Este texto es un resumen general de las caracteristicas y/o atributos de un filtrado de un dataset donde se analizan condiciones biologicas de biodiversidad. Con respecto a esto realiza unas conclusiones en las que predigas especies que se deban cuidar mas , caracteristicas importantes generales, recomendaciones para el cuidado de las especies y caracteristicas importantes estadisticas.
+                            
                             '''
             respuesta += comparativa
         except:
-            respuesta += ", sacame conclusiones al respecto"
+            respuesta += " \n \n Este texto es un resumen general de las caracteristicas y/o atributos de un filtrado de un dataset donde se analizan condiciones biologicas de biodiversidad. Con respecto a esto realiza unas conclusiones en las que predigas especies que se deban cuidar mas , caracteristicas importantes generales y recomendaciones para el cuidado de las especies."
             return respuesta
 
         return respuesta
