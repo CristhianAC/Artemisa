@@ -15,7 +15,7 @@ def proyect(request):
         return render(request, "proyect.html", context)
     else:
         
-        context = procesos.obternerHTML(request.POST['dataset'])
+        context = procesos.obternerHTML(int(request.POST['dataset']))
         context["formDs"] = ButtonSelector
         context["search"] = Searching
         return render(request, "proyect.html", context)
