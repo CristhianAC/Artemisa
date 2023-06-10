@@ -20,8 +20,6 @@ class Cartografia (Componente):
             ubicaciones['ubicacion'].append(dataset.ubicacion)
             ubicaciones['latitude'].append(coord[0][2])
             ubicaciones['longitude'].append(coord[0][1])
-
-        print(ubicaciones)
         df = pd.DataFrame(ubicaciones)
 
         token = 'pk.eyJ1Ijoic2ViYXN0aWFubWFsZG9uYWRvMTk0NSIsImEiOiJjbGluYnRobHkwbDQyM2xwOGc4aGN5ZnpvIn0.Jal1X7da0VhVK8gkKrWBng'
@@ -38,10 +36,7 @@ class Cartografia (Componente):
                 'center': dict(lat = ubicaciones['longitude'][1], lon = ubicaciones['latitude'][1])},
             showlegend = False)
         
-        fig.show()
-        return fig.to_html()
-
-            
+        return fig 
 
     def generarListadoCoordenadas (self, dataset, criterio: Optional[list] = [], rango: Optional[str] = "species"):
         return self.procesos.filtrado.filtrarDataSet({'species':[], 'decimalLatitude': [], 'decimalLongitude': []}, dataset, condicionales={rango: criterio})
