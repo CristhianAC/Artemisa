@@ -13,6 +13,7 @@ from io import BytesIO
 import plotly.graph_objects as go
 from flask import Flask, render_template
 import base64
+app = Flask(__name__)
 
 class Miscelania (Componente):
     

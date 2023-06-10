@@ -41,7 +41,11 @@ class Cartografia (Componente):
     def generarMapaLocalizacionMuestras (self, dataset, especie):
         coord = self.generarListadoCoordenadas(dataset, criterio=[especie])
         df = pd.DataFrame({'species': [i[0] for i in coord],'latitude': [i[1] for i in coord], 'longitude':[j[2] for j in coord], 'conteo':[1 for z in coord]})
-        pos = (list(df['latitude'])[0], list(df['longitude'])[0])
+
+        try:
+            pos = (list(df['latitude'])[0], list(df['longitude'])[0])
+        except:
+            pos (0, 0)
         
         fig = px.density_mapbox(df, lat = 'latitude', lon = 'longitude', z = 'conteo',
                                 radius = 10,

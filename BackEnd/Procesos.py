@@ -77,7 +77,7 @@ class Procesos:
             )'''
 
         #Cargar Gráficas
-        '''db = self.datasets[2]
+        db = self.datasets[2]
         self.context = {
                 #Gráficas
                 "varCantEsp": self.graficos.temporalVariacionCantEspecies(db).to_html(),
@@ -105,18 +105,7 @@ class Procesos:
                 "res_dataset9": self.miscelania.generarResumentTextualBreveRegion(self.datasets[8]),
                 "res_dataset10": self.miscelania.generarResumentTextualBreveRegion(self.datasets[9]),
                 "res_dataset11": self.miscelania.generarResumentTextualBreveRegion(self.datasets[10]),
-                "res_dataset12": self.miscelania.generarResumentTextualBreveRegion(self.datasets[11])}'''
+                "res_dataset12": self.miscelania.generarResumentTextualBreveRegion(self.datasets[11])}
 
     def obternerHTML (self, ind):
         return self.datasets[ind].context
-
-procesos = Procesos()
-db = procesos.datasets[2]
-
-#df = procesos.filtrado.especiesPeligroExtincion(db, procesos.peligro_extincion)
-#df = procesos.graficos.variacionConteoEspecie(db, 'Spondias mombin')
-# Ejemplo de uso
-#species_key = "2765940"  # Reemplaza SPECIES_KEY con el speciesKey que deseas buscar
-print(procesos.miscelania.mostrar_imagen_especie_colombia("Quiscalus mexicanus", db))
-#print(df)
-#procesos.graficos.variacionConteoEspecie(db, "Spondias mombin")
