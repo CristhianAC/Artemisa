@@ -35,7 +35,16 @@ class Cartografia (Componente):
                 'style': "outdoors", 'zoom': 8,
                 'center': dict(lat = ubicaciones['longitude'][1], lon = ubicaciones['latitude'][1])},
             showlegend = False)
-        
+        fig.update_layout(paper_bgcolor="rgb(15,163,72,0)", 
+                          font=dict(
+                            family="Courier New, monospace",
+                            size=12,
+                            color="White"),
+                          legend=dict(
+                            yanchor="top",
+                            y=0.99,
+                            xanchor="left",
+                            x=0.01))
         return fig 
 
     def generarListadoCoordenadas (self, dataset, criterio: Optional[list] = [], rango: Optional[str] = "species"):
@@ -78,4 +87,14 @@ class Cartografia (Componente):
                                 zoom = 11,
                                 mapbox_style = 'carto-positron',
                                 opacity = 0.5)
+        fig.update_layout(paper_bgcolor="rgb(15,163,72,0)", 
+                          font=dict(
+                            family="Courier New, monospace",
+                            size=12,
+                            color="White"),
+                          legend=dict(
+                            yanchor="top",
+                            y=0.99,
+                            xanchor="left",
+                            x=0.01))
         return fig

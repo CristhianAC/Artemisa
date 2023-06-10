@@ -1,12 +1,12 @@
 import openai
 from .Miscelania import Miscelania
 class Openaai:
-    def __init__(self, db, miscelanea:Miscelania = None) -> None:
+    def __init__(self, ds,miscelanea:Miscelania) -> None:
         
         
         openai.api_key = "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"
         structure = [
-            {"role" : "user", "content": miscelanea.generarResumenTextualRegion(db)},
+            {"role" : "user", "content": miscelanea.generarResumenTextualRegion(ds)},
         ]
         response = openai.ChatCompletion.create(
             model = "gpt-3.5-turbo",

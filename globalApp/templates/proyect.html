@@ -30,6 +30,7 @@
         </header>
         <main>
                 {% block content %}
+                {% csrf_token %}
                 <section class="container">
                         <div class="org">
                                 <h1 class="subtitle">Mapa</h1>
@@ -40,9 +41,12 @@
                                                 {{ mapRegiones|safe }}
 
                                         </div>
-                                        <div class="tabla">
+                                        <div class="form">
 
-                                                {{ chart|safe }}
+                                                {{formDs.as_p}}
+                                                <button>
+                                                        Accept
+                                                </button>
 
                                         </div>
                                 </div>

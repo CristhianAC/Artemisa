@@ -110,3 +110,9 @@ body{
 .subtitlediv{
     padding: 45px;
 }
+.form{
+    
+    justify-content:left;
+    padding-left: 200px;
+    color: black;
+}
