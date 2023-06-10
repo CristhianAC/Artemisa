@@ -25,6 +25,7 @@ class Cartografia (Componente):
         token = 'pk.eyJ1Ijoic2ViYXN0aWFubWFsZG9uYWRvMTk0NSIsImEiOiJjbGluYnRobHkwbDQyM2xwOGc4aGN5ZnpvIn0.Jal1X7da0VhVK8gkKrWBng'
         fig = go.Figure(go.Scattermapbox(
             mode = "markers+text",
+            width = 500,
             lon = ubicaciones['latitude'], lat = ubicaciones['longitude'],
             marker = {'size': 20, 'symbol': ["park" for i in ubicaciones['ubicacion']]},
             text = ubicaciones['ubicacion'],textposition = "bottom right"))
