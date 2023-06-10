@@ -73,7 +73,7 @@ body{
     height: 500px;
     grid-template-columns: 1fr 1fr;
     gap: 100px;
-    
+    justify-content: center;
 }
 .resumenes__item{
     background-color: #0fa3489c;
@@ -88,12 +88,16 @@ body{
 .unoportres{
     
     display: grid;
-    height: 500px;
-    grid-template-columns: 1fr 1fr 1fr;
+    height: auto;
+    
+    grid-template-columns: 1fr 1fr;
     padding: 100px 0;
     
 }
-
+.cantende{
+    display: flex;
+    justify-content: center;
+}
 .titlediv{
     padding: 45px;
     

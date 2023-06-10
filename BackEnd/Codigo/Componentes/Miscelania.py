@@ -72,9 +72,11 @@ class Miscelania (Componente):
                             un total de {datos['variacion'][2]} muestras de {datos['variacion'][1]} especies, de las cuales, 
                             {datos['variacion'][4]} eran de especies endémicas, casi endémicas o amenazadas, lo que supone 
                             una varición de {datos['variacion'][4] - datos['seguimiento'][4]} especies de este tipo reportadas,
+                            sacame conclusiones al respecto.
                             '''
             respuesta += comparativa
         except:
+            respuesta += ", sacame conclusiones al respecto"
             return respuesta
 
         return respuesta
