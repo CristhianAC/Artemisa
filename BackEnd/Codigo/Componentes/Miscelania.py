@@ -58,7 +58,8 @@ class Miscelania (Componente):
     def generarResumenTextualRegion (self, dataset):
         datos = self.generarResumenRegion(dataset)
 
-        respuesta = f'''
+        try:
+            respuesta = f'''
                     Para una región ubicada en el {dataset.ubicacion}, la empresa Promigas está haciendo labores
                     de restitución del ecosistema, el cual para la última medición realizada en {datos['seguimiento'][0]},
                     fueron recolectadas un total de {datos['seguimiento'][2]} muestras de especies con {datos['seguimiento'][1]}
@@ -66,7 +67,6 @@ class Miscelania (Componente):
                     El índice de Shannon de biodiversidad de esta medición apunta a {datos["seguimiento"][3]}
                     '''
         
-        try:
             comparativa =   f'''
                             , del periodo anterior de estudio, realizado en el {datos['variacion'][0]}, se pudo obtener
                             un total de {datos['variacion'][2]} muestras de {datos['variacion'][1]} especies, de las cuales, 

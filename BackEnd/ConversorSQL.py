@@ -65,10 +65,11 @@ class ConversorSQL:
                         "issue TEXT"]
                 
         for nombre_archivo in lista_archivos:
+            ubicacion = nombre_archivo.split(".")[0]
             nombre_bd = f"Muestra-{len(bases_datos)+1}.bd"
             nombre_tabla = f"Muestra_{len(bases_datos)+1}"
             conn = self.convertirCSVaSQL(nombre_bd, self.dir_carpeta + "/Datasets/" + nombre_archivo, nombre_tabla, lista_indices)
-            nuevo_bd = Dataset(conn, nombre_bd, nombre_tabla)
+            nuevo_bd = Dataset(conn, nombre_bd, nombre_tabla, ubicacion)
 
             bases_datos.append(nuevo_bd)
 
@@ -157,7 +158,7 @@ class ConversorSQL:
             nombre_bd = f"EspEnd-{len(bases_datos)+1}.bd"
             nombre_tabla = f"EspEnd_{len(bases_datos)+1}"
             conn = self.convertirCSVaSQL(nombre_bd, self.dir_carpeta + "/EspeciesEndemicas/" + nombre_archivo, nombre_tabla, lista_indices[nombre_archivo])
-            nuevo_bd = Dataset(conn, nombre_bd, nombre_tabla)
+            nuevo_bd = Dataset(conn, nombre_bd, nombre_tabla, "end")
 
             bases_datos.append(nuevo_bd)
 
@@ -205,7 +206,7 @@ class ConversorSQL:
                 nombre_bd = f'EspExt-{nombre}.bd'
                 nombre_tabla = f'EspExt_{nombre}'
                 conn = self.generarSQL(None, nombre_bd, lista_indices, nombre_tabla)
-                nuevo_bd = Dataset(conn, nombre_bd, nombre_tabla)
+                nuevo_bd = Dataset(conn, nombre_bd, nombre_tabla, "pe")
 
                 bases_datos.append(nuevo_bd)
 

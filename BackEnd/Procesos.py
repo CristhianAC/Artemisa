@@ -95,7 +95,3 @@ class Procesos:
         self.context['varEspecie'] = self.cartoficos.generarMapaLocalizacionMuestras(self.dataset, especie).to_html()
 
         return self.context
-
-procesos = Procesos()
-db = procesos.datasets[2]
-procesos.graficos.proporcionEspeciesPeligroExtincion(db).show()

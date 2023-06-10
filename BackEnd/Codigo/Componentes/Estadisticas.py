@@ -132,7 +132,7 @@ class Estadisticas (Componente):
     
     def calcularCurvaAcumulacion (self, dataset):
         datos = self.obtenerInfoAnual(dataset)
-        registros = list(datos.keys())
+        registros = [year for year in datos.keys() if (type(year) == int)]
         registros.sort()
         muestras_mensuales = { year:
                                 { month: self.procesos.estadisticos.obtenerConteoRangoTaxonomico(dataset, condicionales= {'year': [year], 'month': [month+1]}) for month in range(12)}
