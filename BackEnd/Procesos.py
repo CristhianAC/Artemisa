@@ -25,8 +25,9 @@ class Procesos:
         #Cargar Bases de Datos
         self.datasets = self.conversor.cargarDatasets()
         self.endemicas = self.conversor.cargarEspeciesEndemicas()
-        print("Cargando Especies en vía de Extinción")
-        #self.peligro_extincion = self.conversor.cargarPeligroExtincion()
+        self.peligro_extincion = self.conversor.cargarPeligroExtincion()
+
+        self.dataset = self.datasets[2]
 
         #Generar Resúmenes
         '''res = [self.miscelania.generarResumentTextualBreveRegion(self.datasets[0]),
@@ -77,7 +78,7 @@ class Procesos:
             )'''
 
         #Cargar Gráficas
-        db = self.datasets[2]
+        db = self.dataset
         self.context = {
                 #Gráficas
                 "varCantEsp": self.graficos.temporalVariacionCantEspecies(db).to_html(),
@@ -110,4 +111,11 @@ class Procesos:
                 "res_dataset12": self.miscelania.generarResumentTextualBreveRegion(self.datasets[11])}
 
     def obternerHTML (self, ind):
-        return self.datasets[ind].context
+        self.context = self.dataset.context
+        return self.context
+
+    def solicitarInfoEspecie (self, especie):
+        self.context['mapMuestra'] = self.cartoficos.generarMapaLocalizacionMuestras(self.dataset, especie).to_html()
+        self.context['varEspecie'] = self.cartoficos.generarMapaLocalizacionMuestras(self.dataset, especie).to_html()
+
+        return self.context
