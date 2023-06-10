@@ -189,5 +189,42 @@ class Graficos (Componente):
                             ))
         return fig
 
-    def variacionConteoEspecie (self, dataset):
-        pass
+    def variacionConteoEspecie (self, dataset, specie):
+        datos = self.procesos.estadisticos.obtenerInfoAnual(dataset)
+        registros = list(datos.keys())
+        registros.sort()
+        muestras_mensuales = { year:
+                                { month: self.procesos.estadisticos.obtenerConteoRangoTaxonomico(dataset, condicionales= {'year': [year], 'month': [month+1], 'species': [specie]}) for month in range(12)}
+                            for year in registros
+                            }
+        
+        self.acum = 0
+
+        try:
+            df = pd.DataFrame(dict(
+                        month = [f"{1+month}/{year}" for year in datos.keys() for month in range(12)],
+                        conteos_muestras = [muestras_mensuales[year][month][specie] if len(muestras_mensuales[year][month]) > 0 else 0 for year in muestras_mensuales for month in muestras_mensuales[year]],
+                        acum_muestras = [self.acumular(muestras_mensuales[year][month][specie]) if len(muestras_mensuales[year][month]) > 0 else self.acum for year in muestras_mensuales for month in muestras_mensuales[year]],
+                    ))
+        except:
+            df = pd.DataFrame(dict(
+                        month = [f"" for i in range(12)],
+                        conteos_muestras = [0 for i in range(12)],
+                        acum_muestras = [f"" for i in range(12)]
+                    ))
+
+        fig = px.line(df, x="month", y=["conteos_muestras","acum_muestras"], title=f"Conteo de Muestras para {specie}", markers=True, color_discrete_sequence=["lawngreen", "steelblue"])
+        fig.update_layout(paper_bgcolor="rgb(15,163,72,0)", 
+                          font=dict(
+                                    family="Courier New, monospace",
+                                    size=18,
+                                    color="White"
+                            ))
+        return fig
+
+    def proporcionEspeciesPeligroExtincion (self, dataset):
+        peligro_ext_anual = self.procesos.estadisticos.obtener(dataset, 'Cat')
+
+    def acumular (self, num):
+        self.acum += num
+        return self.acum

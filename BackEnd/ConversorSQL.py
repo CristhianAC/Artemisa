@@ -164,7 +164,7 @@ class ConversorSQL:
         return bases_datos
     
     def cargarPeligroExtincion (self):
-        lista_archivos = os.listdir(self.dir_carpeta + "/PeligroExtincion")
+        lista_archivos = os.listdir(self.dir_carpeta + "/BaseDatos")
         bases_datos = []
 
         lista_indices = ['datos_ind INTEGER PRIMARY KEY',
@@ -199,7 +199,7 @@ class ConversorSQL:
                         ]
                 
         for nombre_archivo in lista_archivos:
-            if (nombre_archivo.split(".")[1] == "shp"):
+            if (nombre_archivo.split("-")[0] == "EspExt"):
                 archivo_shp = gpd.read_file(self.dir_carpeta + "/PeligroExtincion/" + nombre_archivo)
                 archivo_shp.drop(columns=["geometry"], inplace=True)
                 print(archivo_shp)

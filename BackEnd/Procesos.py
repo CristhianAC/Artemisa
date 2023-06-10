@@ -25,6 +25,8 @@ class Procesos:
         #Cargar Bases de Datos
         self.datasets = self.conversor.cargarDatasets()
         self.endemicas = self.conversor.cargarEspeciesEndemicas()
+        print("Cargando Especies en vía de Extinción")
+        #self.peligro_extincion = self.conversor.cargarPeligroExtincion()
 
         #Generar Resúmenes
         '''res = [self.miscelania.generarResumentTextualBreveRegion(self.datasets[0]),
@@ -110,21 +112,11 @@ class Procesos:
 
 procesos = Procesos()
 db = procesos.datasets[2]
-df = procesos.estadisticos.calcularCurvaAcumulacion(db)
 
-datos = procesos.estadisticos.obtenerInfoAnual(db)
-registros = list(datos.keys())
-registros.sort()
-muestras_mensuales = { year:
-                        { month: procesos.estadisticos.obtenerConteoRangoTaxonomico(db, condicionales= {'year': [year], 'month': [month+1], 'species': ['Spondias mombin']}) for month in range(12)}
-                       for year in registros
-                     }
-
-conteos_mensuales = { year:
-                                { month: {'Muestras mensuales': len([specie for specie in muestras_mensuales[year][month].keys()]),
-                                          'Muestras acumuladas': sum([muestras_mensuales[year][month][specie] for specie in muestras_mensuales[year][month].keys()])} for month in range(12)}
-                            for year in registros
-                            }
-
-print(muestras_mensuales)
+#df = procesos.filtrado.especiesPeligroExtincion(db, procesos.peligro_extincion)
+#df = procesos.graficos.variacionConteoEspecie(db, 'Spondias mombin')
+# Ejemplo de uso
+#species_key = "2765940"  # Reemplaza SPECIES_KEY con el speciesKey que deseas buscar
+print(procesos.miscelania.mostrar_imagen_especie_colombia("Quiscalus mexicanus", db))
+#print(df)
 #procesos.graficos.variacionConteoEspecie(db, "Spondias mombin")

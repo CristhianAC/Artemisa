@@ -55,6 +55,14 @@ class Estadisticas (Componente):
 
         return endemicas_anual
 
+    def obtenerConteoEspeciesPeligroExtincion (self, dataset, criterio: Optional[str] = 'species'):
+        datos = self.procesos.estadisticos.obtenerInfoAnual(dataset)
+        endemicas_anual = {year: {'species':  self.obtenerConteoRangoTaxonomico(self.procesos.filtrado.especiesEndemicas(dataset, self.procesos.endemicas, condicionales={'year': [year]}), rango=criterio)} for year in datos.keys()}
+        for year in endemicas_anual.keys():
+            endemicas_anual[year]['S'] = len(endemicas_anual[year]['species'].keys())
+
+        return endemicas_anual
+
     def obtenerInfoAnual (self, dataset):
         conteos_anuales = self.procesos.estadisticos.obtenerConteoRangoTaxonomico(dataset, rango='year')
         conteos_especies = {year: {} for year in conteos_anuales.keys()}

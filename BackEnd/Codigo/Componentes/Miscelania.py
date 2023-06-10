@@ -6,6 +6,13 @@
 |------------------------------------------------------------------------------|
 '''
 from .Componente import Componente
+import requests
+from PIL import Image
+import io
+from io import BytesIO
+import plotly.graph_objects as go
+from flask import Flask, render_template
+import base64
 
 class Miscelania (Componente):
     
@@ -70,3 +77,35 @@ class Miscelania (Componente):
             return respuesta
 
         return respuesta
+
+    def mostrar_imagen_especie_colombia(self, specie, db):
+        datos = self.procesos.filtrado.filtrarDataSet({'species': [], 'speciesKey': []}, db)
+        llaves = {dato[0]: dato[1] for dato in datos}
+
+        try:
+            species_key = llaves[specie]
+        except:
+            print("Especie no encontrada")
+            return
+        print(llaves)
+        url = f"https://api.gbif.org/v1/species/{species_key}/media"
+        params = {
+            "limit": 1
+        }
+        response = requests.get(url, params=params)
+
+        if response.status_code == 200:
+            data = response.json()
+            if data['results']:
+                image_url = data['results'][0]['identifier']
+                response = requests.get(image_url)
+                if response.status_code == 200:
+                    im = Image.open(BytesIO(response.content))
+                    data = io.BytesIO()
+                    im.save(data, "JPEG")
+                    encoded_img_data = base64.b64encode(data.getvalue())
+
+                    return render_template("index.html", img_data=encoded_img_data.decode('utf-8'))
+                
+
+        print("No se encontró una imagen para esta especie en Colombia.")
