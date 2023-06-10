@@ -47,7 +47,7 @@ class Procesos:
 
 
         #Cargar Gráficas para todos los dataset
-        for db in self.datasets:
+        for db in self.datasets[:5]:
             db.cargarGraficas(
                 context = {
                 #Gráficas
