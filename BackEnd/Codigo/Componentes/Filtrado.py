@@ -20,10 +20,10 @@ class Filtrado:
         solicitud = self.generarCriterioBusqueda(dataset.nombre_tabla, criterios, condicionales)
 
         try:
-            print(f"Generando con criterio de búsqueda : {solicitud}")
+            #print(f"Generando con criterio de búsqueda : {solicitud}")
             return cursor.execute(solicitud).fetchall()
         except:
-            print(f"Para el criterio de búsqueda : {solicitud}")
+            print(f"ERROR!!! : Para el criterio de búsqueda : {solicitud}")
             print(f"\t-> No se encontraron los datos buscados\n retornando lista vacia")
             return [()]
     
@@ -47,7 +47,7 @@ class Filtrado:
         if not (where == ""):
             where = f"WHERE {where[:-4]}"
 
-        print(f"{select} FROM {nombre_tabla} {where}")
+        #print(f"{select} FROM {nombre_tabla} {where}")
         return f"{select} FROM {nombre_tabla} {where}"
     
     def generarCondiciones (self, criterios, categoria):

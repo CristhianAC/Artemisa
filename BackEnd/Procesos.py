@@ -29,7 +29,8 @@ class Procesos:
         self.endemicas = self.conversor.cargarEspeciesEndemicas()
         self.peligro_extincion = self.conversor.cargarPeligroExtincion()
 
-        self.dataset = self.datasets[2]
+        dataset = 5
+        self.dataset = self.datasets[dataset]
 
         #Generar Resúmenes
         res = [self.miscelania.generarResumentTextualBreveRegion(self.datasets[0]),
@@ -47,7 +48,7 @@ class Procesos:
 
 
         #Cargar Gráficas para todos los dataset
-        for db in self.datasets[:5]:
+        for db in self.datasets:
             db.cargarGraficas(
                 context = {
                 #Gráficas
@@ -84,6 +85,10 @@ class Procesos:
                 "res_dataset11": res[10],
                 "res_dataset12": res[11]}
             )
+
+            print("----------------------------------------------\\\\----------------------------------------------")
+            print(f"Finalizada la carga del dataset {db.nombre_archivo}")
+            print("----------------------------------------------\\\\----------------------------------------------")
 
     def obternerHTML (self, ind: int = 2):
         self.dataset = self.datasets[ind]
