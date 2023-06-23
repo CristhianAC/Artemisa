@@ -109,6 +109,12 @@ class Miscelania (Componente):
         }
         response = requests.get(url, params=params)
 
+        dir = self.direccion.replace("\\BackEnd", "")
+        try:
+            os.remove(f"{dir}/static/img/solicitud_imagen.png")
+        except:
+            print("Todavia no existe imagen")
+
         if response.status_code == 200:
             data = response.json()
             if data['results']:
@@ -117,12 +123,6 @@ class Miscelania (Componente):
                 if response.status_code == 200:
                     im = Image.open(BytesIO(response.content))
                     data = io.BytesIO()
-
-                    dir = self.direccion.replace("\\BackEnd", "")
-                    try:
-                        os.remove(f"{dir}/static/img/solicitud_imagen.png")
-                    except:
-                        print("Todavia no existe imagen")
 
                     try:
                         im.save(f"{dir}/static/img/solicitud_imagen.png", "PNG")
