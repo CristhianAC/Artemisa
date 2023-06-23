@@ -118,7 +118,7 @@ class Miscelania (Componente):
                     im = Image.open(BytesIO(response.content))
                     data = io.BytesIO()
 
-                    dir = self.direccion.replace("/BackEnd", "")
+                    dir = self.direccion.replace("\\BackEnd", "")
                     try:
                         os.remove(f"{dir}/static/img/solicitud_imagen.png")
                     except:
