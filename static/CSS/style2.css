@@ -133,7 +133,7 @@ body{
     justify-content: center;
     text-align: center;
     font-size: 19px;
-    height: 5000px;
+    height:auto;
 }
 button{
     color: black;
