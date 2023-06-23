@@ -18,6 +18,10 @@ app = Flask(__name__)
 
 class Miscelania (Componente):
     
+    def __init__(self, procesos, direccion):
+        super().__init__(procesos)
+        self.direccion = direccion
+
     def generarResumenRegion (self, dataset):
         registro_anual = self.procesos.estadisticos.obtenerDiversidadAlpha(dataset)
         endemicas = self.procesos.estadisticos.obtenerConteoEspeciesEndemicas(dataset)
@@ -113,17 +117,19 @@ class Miscelania (Componente):
                 if response.status_code == 200:
                     im = Image.open(BytesIO(response.content))
                     data = io.BytesIO()
+
+                    dir = self.direccion.replace("/BackEnd", "")
                     try:
-                        os.remove(f"/home/Maldonado/Artemisa_Web/Artemisa/static/img/solicitud_imagen.png")
+                        os.remove(f"{dir}/static/img/solicitud_imagen.png")
                     except:
                         print("Todavia no existe imagen")
 
                     try:
-                        im.save(f"/home/Maldonado/Artemisa_Web/Artemisa/static/img/solicitud_imagen.png", "PNG")
+                        im.save(f"{dir}/static/img/solicitud_imagen.png", "PNG")
                     except Exception as e:
                         print(str(e))
                         print("Error al guardar imagen")
-                        
+
                     return
                     #encoded_img_data = base64.b64encode(data.getvalue())
 

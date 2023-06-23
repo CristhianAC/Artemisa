@@ -18,10 +18,10 @@ class Procesos:
         self.cartoficos = Cartografia(self)
         self.estadisticos = Estadisticas(self)
         self.filtrado = Filtrado()
-        self.graficos = Graficos(self)
-        self.miscelania = Miscelania(self)
-        self.ia = Openaai(self.miscelania)
         print('Directory Name: ', os.path.dirname(__file__))
+        self.graficos = Graficos(self)
+        self.miscelania = Miscelania(self, os.path.dirname(__file__))
+        self.ia = Openaai(self.miscelania)
         self.conversor = ConversorSQL(os.path.dirname(__file__))
 
         #Cargar Bases de Datos
