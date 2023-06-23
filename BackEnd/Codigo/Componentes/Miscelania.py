@@ -37,7 +37,7 @@ class Miscelania (Componente):
 
         #Obtener información del penúltimo año "útil" de seguimiento
         try:
-            if (var_registro_S * 3 >= ult_registro_S and var_registro_end * 3 >= ult_registro_end):
+            if (registro_anual[comp_registro]['S'] * 3 >= ult_registro_S and endemicas[comp_registro]['S'] * 3 >= ult_registro_end):
                 comp_registro = registros[-2]
                 var_registro_S = registro_anual[comp_registro]['S']
                 var_registro_N = registro_anual[comp_registro]['N']

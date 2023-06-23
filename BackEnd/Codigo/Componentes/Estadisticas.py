@@ -89,10 +89,10 @@ class Estadisticas (Componente):
 
             diversidad_anual[year]['S'] = S
             diversidad_anual[year]['N'] = N
-            diversidad_anual[year][self.IND_SIMPSON] = 1 - sum([(p_i[especie]**2) for especie in conteos_especies[year]['Especies'].keys()])
-            diversidad_anual[year][self.IND_MENHINICK] = S/sqrt(N)
-            diversidad_anual[year][self.IND_SHANNON] =  -sum([(p_i[especie] * ln(p_i[especie])) for especie in conteos_especies[year]['Especies'].keys()])
-            diversidad_anual[year][self.IND_PIELOU] = diversidad_anual[year][self.IND_SHANNON]/ln(S)
+            diversidad_anual[year][self.IND_SIMPSON] = round(1 - sum([(p_i[especie]**2) for especie in conteos_especies[year]['Especies'].keys()]), 3)
+            diversidad_anual[year][self.IND_MENHINICK] = round(S/sqrt(N), 3)
+            diversidad_anual[year][self.IND_SHANNON] = round(-sum([(p_i[especie] * ln(p_i[especie])) for especie in conteos_especies[year]['Especies'].keys()]), 3)
+            diversidad_anual[year][self.IND_PIELOU] = round(diversidad_anual[year][self.IND_SHANNON]/ln(S), 3)
 
         return diversidad_anual 
     
