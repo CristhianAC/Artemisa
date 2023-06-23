@@ -184,10 +184,6 @@ class Graficos (Componente):
                                 ))
             return fig
         except:
-            print("Error sucedido con el dataframe : ")
-            print("---------------------------------------------------------------")
-            print(df)
-            print("---------------------------------------------------------------")
             return px.line(pd.DataFrame({"x":[], "y": []}), x = "x", y = "y")
 
     def proporcionEspeciesEndemicas (self, dataset):

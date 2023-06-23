@@ -13,6 +13,7 @@ from io import BytesIO
 import plotly.graph_objects as go
 from flask import Flask, render_template
 import base64
+import os
 app = Flask(__name__)
 
 class Miscelania (Componente):
@@ -32,16 +33,20 @@ class Miscelania (Componente):
 
         #Obtener información del penúltimo año "útil" de seguimiento
         try:
-            comp_registro = registros[-2]
-            var_registro_S = registro_anual[comp_registro]['S']
-            var_registro_N = registro_anual[comp_registro]['N']
-            var_registro_Alfa = registro_anual[comp_registro]['Shannon']
-            var_registro_end = endemicas[comp_registro]['S']
+            if (var_registro_S * 3 >= ult_registro_S and var_registro_end * 3 >= ult_registro_end):
+                comp_registro = registros[-2]
+                var_registro_S = registro_anual[comp_registro]['S']
+                var_registro_N = registro_anual[comp_registro]['N']
+                var_registro_Alfa = registro_anual[comp_registro]['Shannon']
+                var_registro_end = endemicas[comp_registro]['S']
                 
-            return {'seguimiento': [ult_registro, ult_registro_S, ult_registro_N, ult_registro_Alfa, ult_registro_end], 
-                    'variacion': [comp_registro, var_registro_S, var_registro_N, var_registro_Alfa, var_registro_end]}
+                return {'seguimiento': [ult_registro, ult_registro_S, ult_registro_N, ult_registro_Alfa, ult_registro_end], 
+                        'variacion': [comp_registro, var_registro_S, var_registro_N, var_registro_Alfa, var_registro_end]}
         except:
-            return {'seguimiento': [ult_registro, ult_registro_S, ult_registro_N, ult_registro_Alfa, ult_registro_end]}
+            pass
+
+        print(f"Para el resumen de {dataset.ubicacion} no se pudieron cargar datos históricos")
+        return {'seguimiento': [ult_registro, ult_registro_S, ult_registro_N, ult_registro_Alfa, ult_registro_end]}
     
     def generarResumentTextualBreveRegion (self, dataset):
         datos = self.generarResumenRegion(dataset)
@@ -90,10 +95,10 @@ class Miscelania (Componente):
 
         try:
             species_key = llaves[specie]
-        except:
+        except Exception as e:
+            print(str(e))
             print("Especie no encontrada")
             return
-        print(llaves)
         url = f"https://api.gbif.org/v1/species/{species_key}/media"
         params = {
             "limit": 1
@@ -108,10 +113,21 @@ class Miscelania (Componente):
                 if response.status_code == 200:
                     im = Image.open(BytesIO(response.content))
                     data = io.BytesIO()
-                    im.save(data, "JPEG")
-                    encoded_img_data = base64.b64encode(data.getvalue())
+                    try:
+                        os.remove(f"/home/Maldonado/Artemisa_Web/Artemisa/static/img/solicitud_imagen.png")
+                    except:
+                        print("Todavia no existe imagen")
 
-                    return render_template("index.html", img_data=encoded_img_data.decode('utf-8'))
+                    try:
+                        im.save(f"/home/Maldonado/Artemisa_Web/Artemisa/static/img/solicitud_imagen.png", "PNG")
+                    except:
+                        print("Error al guardar imagen")
+                        
+                    return
+                    #encoded_img_data = base64.b64encode(data.getvalue())
+
+
+                    #return render_template("index.html", img_data=encoded_img_data.decode('utf-8'))
                 
 
         print("No se encontró una imagen para esta especie en Colombia.")
