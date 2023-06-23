@@ -99,5 +99,5 @@ class Procesos:
     def solicitarInfoEspecie (self, especie):
         self.context['mapMuestra'] = self.cartoficos.generarMapaLocalizacionMuestras(self.dataset, especie).to_html()
         self.context['varEspecie'] = self.graficos.variacionConteoEspecie(self.dataset, especie).to_html()
-
+        self.miscelania.mostrar_imagen_especie_colombia(especie, self.dataset)
         return self.context

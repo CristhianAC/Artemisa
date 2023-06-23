@@ -120,7 +120,8 @@ class Miscelania (Componente):
 
                     try:
                         im.save(f"/home/Maldonado/Artemisa_Web/Artemisa/static/img/solicitud_imagen.png", "PNG")
-                    except:
+                    except Exception as e:
+                        print(str(e))
                         print("Error al guardar imagen")
                         
                     return
