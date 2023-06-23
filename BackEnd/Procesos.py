@@ -1,11 +1,11 @@
-from Codigo.Componentes.Cartografia import Cartografia
-from Codigo.Componentes.Estadisticas import Estadisticas
-from Codigo.Componentes.Filtrado import Filtrado
-from Codigo.Componentes.Graficos import Graficos
-from Codigo.Componentes.Miscelania import Miscelania
-from Codigo.Componentes.IA import Openaai
-from ConversorSQL import ConversorSQL
-from Codigo.Componentes.Constantes import Constantes
+from .Codigo.Componentes.Cartografia import Cartografia
+from .Codigo.Componentes.Estadisticas import Estadisticas
+from .Codigo.Componentes.Filtrado import Filtrado
+from .Codigo.Componentes.Graficos import Graficos
+from .Codigo.Componentes.Miscelania import Miscelania
+from .Codigo.Componentes.IA import Openaai
+from .ConversorSQL import ConversorSQL
+from .Codigo.Componentes.Constantes import Constantes
 import os
 
 import pandas as pd
@@ -101,15 +101,3 @@ class Procesos:
         self.context['varEspecie'] = self.graficos.variacionConteoEspecie(self.dataset, especie).to_html()
 
         return self.context
-    
-procesos = Procesos()
-datos = procesos.estadisticos.obtenerInfoAnual(procesos.dataset)
-endemicas_anual = {year: {'species':  procesos.estadisticos.obtenerConteoRangoTaxonomico(procesos.filtrado.especiesEndemicas(procesos.dataset, procesos.endemicas, condicionales={'year': [year]}), rango='species')} for year in datos.keys()}
-especies = procesos.filtrado.filtrarDataSet({'species': []}, procesos.dataset)
-print(especies)
-
-print(endemicas_anual)
-
-for especie in especies:
-    print(f"Para la especie : {especie[0]}")
-    procesos.miscelania.mostrar_imagen_especie_colombia(especie[0], procesos.dataset)
