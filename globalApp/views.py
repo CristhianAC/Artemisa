@@ -22,7 +22,7 @@ def proyect(request):
                 context = procesos.obternerHTML(int(request.POST.get('dataset',False)))
                 context["conclusiones"] = procesos.ia.generarConclusion(procesos.dataset)
         except:
-            print("No se encontró el dataset") 
+            print("No encontró seleccion de dataset") 
         try:
             if request.POST['texto'] is not None:
                 try:
