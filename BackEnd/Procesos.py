@@ -51,6 +51,7 @@ class Procesos:
         for db in self.datasets:
             db.cargarGraficas(
                 context = {
+                "nombre": db.ubicacion,
                 #Gráficas
                 "varCantEsp": self.graficos.temporalVariacionCantEspecies(db).to_html(),
                 "varContMuestra": self.graficos.temporalVariacionConteoMuestras(db).to_html(),
@@ -68,8 +69,8 @@ class Procesos:
                 "mapMuestra": self.cartoficos.generarMapaLocalizacionMuestras(db, "Spondias mombin").to_html(),
                 "mapRegiones": self.cartoficos.generarMapaRegiones(self.datasets).to_html(),
 
-                #Conclusiones
-                "conclusiones": self.ia.generarConclusion(db),
+                
+                
                 
                 #Descripciones
                 "res_dataset1": res[0],
@@ -97,6 +98,6 @@ class Procesos:
 
     def solicitarInfoEspecie (self, especie):
         self.context['mapMuestra'] = self.cartoficos.generarMapaLocalizacionMuestras(self.dataset, especie).to_html()
-        self.context['varEspecie'] = self.cartoficos.generarMapaLocalizacionMuestras(self.dataset, especie).to_html()
+        self.context['varEspecie'] = self.graficos.variacionConteoEspecie(self.dataset, especie).to_html()
 
         return self.context

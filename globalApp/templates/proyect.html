@@ -33,18 +33,19 @@
                 
                 <section class="container">
                         <div class="org">
-                                <h1 class="subtitle">Mapa</h1>
-                                </divclassorg>
-
+                                <h1 class="subtitle">Panel de visualizacion</h1>
+                                <h2>{{nombre}}</h2>
+                        </div class ="org">
+                                
                                 <div class="mapaset">
                                         <div class="mapa">
                                                 {{ mapRegiones|safe }}
 
                                         </div>
                                         <div class="form">
-                                                <form method="POST" >
+                                                <form method="POST">
                                                         {% csrf_token %}
-                                                        {{formDs.as_p}}
+                                                        {{formDs}}
                                                         <button>
                                                                 Accept
                                                         </button>
@@ -144,25 +145,25 @@
                                                 <h1>Panel de visualizacion</h1>
                                         </div>
                                         <div class="unopordos">
-                                                <div class="cantespecies">
+                                                <div class="cantespecies item">
                                                         {{ varCantEsp|safe }}
                                                 </div>
-                                                <div class="cantmuestras">
+                                                <div class="cantmuestras item">
                                                         {{ varContMuestra|safe }}
 
                                                 </div>
                                         </div>
                                         <div class="unopordos">
-                                                <div class="diversidadalpha">
+                                                <div class="diversidadalpha item">
                                                         {{BiodivAlpha|safe }}
                                                 </div>
-                                                <div class="diversidadB">
+                                                <div class="diversidadB item">
                                                         {{BiodivBeta|safe }}
                                                 </div>
 
                                         </div>
                                         <div>
-                                                <div class="acum">
+                                                <div class="acum item">
                                                         {{acumEsp | safe}}
 
                                                 </div>
@@ -171,7 +172,7 @@
                                                 <h2>Clasificacion Taxonomica</h2>
                                         </div>
                                         <div class="unopordos">
-                                                <div class="cantende">
+                                                <div class="cantende item">
                                                         {{varEspEnd|safe }}
                                                 </div>
 
@@ -179,7 +180,7 @@
 
                                                 </div>
                                         </div>
-                                        <div class="mapa-taxonomica">
+                                        <div class="mapa-taxonomica item">
                                                 {{mapEspEnd|safe }}
                                         </div>
                                         <div class="titlediv">
@@ -188,11 +189,11 @@
                                                 <h2>Distribucion de especies endemicas</h2>
                                         </div>
                                         <div class="unopordos">
-                                                <div class="muestras">
+                                                <div class="muestras item">
 
                                                         {{varConteoEspEnd|safe }}
                                                 </div>
-                                                <div class="prop">
+                                                <div class="prop item">
                                                         {{propEspEnd|safe }}
                                                 </div>
 
@@ -201,25 +202,32 @@
                                                 <h2>Seguimiento de especies</h2>
                                         </div>
                                         <div class="search">
-                                                
+                                                <form method="POST">
+                                                        {% csrf_token %}
+                                                        {{search}}
+                                                        <button>
+                                                                Accept
+                                                        </button>
+                                                </form>
                                         </div>
-                                        <div class="mapacalor">
+                                        <div class="mapacalor item">
 
                                                 {{mapMuestra|safe }}
                                         </div>
                                         <div class="unopordos">
-                                                <div class="rarefaccion">
+                                                <div class="rarefaccion item">
                                                         {{ varEspecie|safe }}
                                                 </div>
                                                 <div class="var en distribucion">
 
                                                 </div>
                                         </div>
-
+                                        <h2>Conclusiones</h2>
                                         <div class="conclusiones">
+                                                
                                                 <div class="conclusionesGPT">
-                                                        <h2>Conclusiones</h2>
-                                                        {{ conclusiones|safe }}
+                                                        
+                                                        {{ conclusiones }}
                                                 </div>
                                         </div>
                                 </div>

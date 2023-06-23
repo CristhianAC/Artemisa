@@ -15,6 +15,6 @@ class ButtonSelector(forms.Form):
         ("10", "Dataset 11"),
         ("11", "Dataset 12")
     )
-    dataset = forms.ChoiceField(choices= choices, label="Elige el dataset deseado")
+    dataset = forms.ChoiceField(choices= choices, label="Elige el dataset deseado", widget=forms.Select(attrs={'class': 'form-control'}))
 class Searching(forms.Form):
-    texto = forms.CharField(label="Nombre de especie")
+    texto = forms.CharField(label="Nombre de especie",widget=forms.TextInput(attrs={'class': 'form-control'}))

@@ -116,3 +116,26 @@ body{
     padding-left: 200px;
     color: black;
 }
+.form-control{
+    background-color: whitesmoke;
+    border-radius: 15px;
+    color: black;
+}
+.conclusiones{
+    display: flex;
+    padding: 50px 300px;
+    justify-content: center;
+    text-align: center;
+    font-size: 19px;
+    height: 5000px;
+}
+button{
+    color: black;
+    background-color: whitesmoke;
+    border-radius: 15px;
+}
+.search{
+    padding: 20px;
+    justify-content: center;
+    
+}
