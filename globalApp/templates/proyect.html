@@ -53,7 +53,7 @@
 
                                         </div>
                                 </div>
-                                <h2>Resumen por dataset</h2>
+                                <h2 class = "conclusion2">Resumen por dataset</h2>
                                 <div class="resumenes">
                                         <div class="resumenes__item">
 
@@ -166,7 +166,7 @@
                                                 </div>
 
                                         </div>
-                                        <div>
+                                        <div class = "spcie">
                                                 <div class="acum item">
                                                         {{acumEsp | safe}}
 
@@ -184,8 +184,10 @@
 
                                                 </div>
                                         </div>
-                                        <div class="mapa-taxonomica item">
+                                        <div class="spcie">
+                                                <div>
                                                 {{mapEspEnd|safe }}
+                                                </div>
                                         </div>
                                         <div class="titlediv">
 
@@ -214,23 +216,24 @@
                                                         </button>
                                                 </form>
                                         </div>
-                                        <div class="mapacalor item">
-
+                                        <div class="spcie">
+                                                <div>
                                                 {{mapMuestra|safe }}
+                                                </div>
                                         </div>
                                         <div class="unopordos">
                                                 <div class="rarefaccion item">
                                                         {{ varEspecie|safe }}
                                                 </div>
                                                 <div class="var en distribucion">
-
+                                                        <img src="{% static '/img/solicitud_imagen.png' %}" class="about__picture img">
                                                 </div>
                                         </div>
-                                        <h2>Conclusiones</h2>
+                                        
                                         <div class="conclusiones">
                                                 
                                                 <div class="conclusionesGPT">
-                                                        
+                                                        <h2 class = "conclusion">Conclusiones</h2>
                                                         {{ conclusiones }}
                                                 </div>
                                         </div>

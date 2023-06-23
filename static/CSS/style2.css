@@ -76,12 +76,12 @@ body{
     justify-content: center;
 }
 .resumenes__item{
-    background-color: #0fa3489c;
-    border-radius: 20px;
+    border: 5px solid #0fa3489c;
+    border-radius: 15px;
+    
     padding: 14px;
     align-items: center;
     justify-content: center;
-    box-shadow: 5px 5px 10px;
     
     
 }
@@ -134,16 +134,37 @@ body{
     text-align: center;
     font-size: 19px;
     height:auto;
+    border: 5px solid #0fa3489c;
+    border-radius: 15px;
+    
 }
 button{
     color: black;
     background-color: whitesmoke;
     border-radius: 15px;
 }
+.item{
+    border: 5px solid #0fa3489c;
+    border-radius: 15px;
+    padding: 10px;
 
+}
 
 .search{
     padding: 20px;
     justify-content: center;
     
+}
+.spcie{
+    padding: 50px;
+}
+.conclusion{
+    padding: 0 0 40px 0;
+    font-size: 40px;
+    font-weight: bolder;
+}
+.conclusion2{
+    padding: 40px 0 0 0;
+    font-size: 40px;
+    font-weight: bolder;
 }
