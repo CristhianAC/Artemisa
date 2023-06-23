@@ -13,6 +13,7 @@ from io import BytesIO
 import plotly.graph_objects as go
 from flask import Flask, render_template
 import base64
+import shutil
 import os
 app = Flask(__name__)
 
@@ -135,6 +136,10 @@ class Miscelania (Componente):
 
 
                     #return render_template("index.html", img_data=encoded_img_data.decode('utf-8'))
-                
+        
+        try:
+            shutil.copyfile(f"{dir}/static/img/error.png", f"{dir}/static/img/solicitud_imagen.png")
+        except:
+            print("Error al registar imagen de No registro fotografico")
 
         print("No se encontró una imagen para esta especie en Colombia.")
