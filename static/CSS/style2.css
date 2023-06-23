@@ -109,6 +109,12 @@ body{
 
 .subtitlediv{
     padding: 45px;
+    
+}
+.nombreDs{
+    padding: 10px;
+    color :white;
+    font-size: 19px;
 }
 .form{
     
@@ -134,6 +140,8 @@ button{
     background-color: whitesmoke;
     border-radius: 15px;
 }
+
+
 .search{
     padding: 20px;
     justify-content: center;
