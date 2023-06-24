@@ -1,7 +1,6 @@
 databases:
   - name: Artemisa
-    databaseName: Artemisa
-    user: Artemisa
+    
 
 services:
   - type: web
