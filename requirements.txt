@@ -2,7 +2,7 @@ aiodns==3.0.0
 AppKit==0.2.8
 asynctest==0.13.0
 beautifulsoup4==4.12.2
-boto3==1.26.159
+boto3==1.26.160
 botocore==1.29.159
 bpython==0.24
 branca==0.6.0
