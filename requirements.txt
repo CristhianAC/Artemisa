@@ -1,5 +1,5 @@
-aiodns==3.0.0
 Cython==0.29.35
+aiodns==3.0.0
 AppKit==0.2.8
 asynctest==0.13.0
 beautifulsoup4==4.12.2
