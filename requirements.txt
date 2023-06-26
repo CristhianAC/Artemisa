@@ -1,4 +1,5 @@
 aiodns==3.0.0
+Cython==0.29.35
 AppKit==0.2.8
 asynctest==0.13.0
 beautifulsoup4==4.12.2
@@ -15,7 +16,6 @@ contextlib2==21.6.0
 cryptography==2.8
 cx_Oracle==8.3.0
 cycler==0.11.0
-Cython==0.29.35
 defusedxml==0.7.1
 disco==1.40.4
 dl==0.1.0
