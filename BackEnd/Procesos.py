@@ -48,7 +48,7 @@ class Procesos:
 
 
         #Cargar Gráficas para todos los dataset
-        for db in self.datasets[:3]:
+        for db in self.datasets:
             db.cargarGraficas(
                 context = {
                 "nombre": db.ubicacion,

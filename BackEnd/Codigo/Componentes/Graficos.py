@@ -132,7 +132,7 @@ class Graficos (Componente):
         df = df.sort_values(by="year")
 
         try:
-            fig = px.line(df, x="year", y="S", title="Cantidad Especies Endémicas Registradas por Año", markers=True, color_discrete_sequence=["darkgreen", "green", "lawngreen", "blue", "steelblue"], width=600) 
+            fig = px.bar(df, x="year", y="S", title="Cantidad Especies Endémicas Registradas por Año", markers=True, color_discrete_sequence=["darkgreen", "green", "lawngreen", "blue", "steelblue"], width=600) 
             fig.update_layout(paper_bgcolor="rgb(15,163,72,0)", 
                             font=dict(
                                         family="Courier New, monospace",
