@@ -6,7 +6,7 @@ class Openaai:
     def __init__(self, miscelanea: Miscelania) -> None:
 
         self.miscelania = miscelanea
-        openai.api_key = "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"
+        openai.api_key = "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"
 
     def generarConclusion(self, db):
         structure = [
