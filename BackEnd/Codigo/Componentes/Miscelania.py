@@ -53,10 +53,10 @@ class Miscelania (Componente):
         print(f"Para el resumen de {dataset.ubicacion} no se pudieron cargar datos históricos")
         return {'seguimiento': [ult_registro, ult_registro_S, ult_registro_N, ult_registro_Alfa, ult_registro_end]}
     
-    def generarResumentTextualBreveRegion (self, dataset):
+    def generarResumentTextualBreveRegion (self, dataset, contador):
         datos = self.generarResumenRegion(dataset)
 
-        resumen = f'''{dataset.ubicacion} :\n
+        resumen = f'''{contador}. {dataset.ubicacion} :\n
             Último registro : {datos['seguimiento'][0]}\n\t
             Cantidad de Muestras : {datos['seguimiento'][2]}\n\t
             Cantidad de Especies : {datos['seguimiento'][1]}\n\t
@@ -97,7 +97,13 @@ class Miscelania (Componente):
     def mostrar_imagen_especie_colombia(self, specie, db):
         datos = self.procesos.filtrado.filtrarDataSet({'species': [], 'speciesKey': []}, db)
         llaves = {dato[0]: dato[1] for dato in datos}
-
+        dir = self.direccion.replace("\\BackEnd", "")
+        
+        try:
+            os.remove(f"{dir}/static/img/solicitud_imagen.png")
+        except:
+            print("Todavia no existe imagen")
+    
         try:
             species_key = llaves[specie]
         except Exception as e:
@@ -110,11 +116,8 @@ class Miscelania (Componente):
         }
         response = requests.get(url, params=params)
 
-        dir = self.direccion.replace("\\BackEnd", "")
-        try:
-            os.remove(f"{dir}/static/img/solicitud_imagen.png")
-        except:
-            print("Todavia no existe imagen")
+        
+        
 
         if response.status_code == 200:
             data = response.json()

@@ -11,6 +11,7 @@ def proyect(request):
     
     if request.method == "GET":
         context = procesos.obternerHTML()
+        
         context["conclusiones"] = procesos.ia.generarConclusion(procesos.dataset)
         context["formDs"] = ButtonSelector
         context["search"] = Searching

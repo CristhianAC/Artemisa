@@ -29,22 +29,22 @@ class Procesos:
         self.endemicas = self.conversor.cargarEspeciesEndemicas()
         self.peligro_extincion = self.conversor.cargarPeligroExtincion()
 
-        dataset = 3
+        dataset = 7
         self.dataset = self.datasets[dataset]
 
         #Generar Resúmenes
-        res = [self.miscelania.generarResumentTextualBreveRegion(self.datasets[0]),
-                self.miscelania.generarResumentTextualBreveRegion(self.datasets[1]),
-                self.miscelania.generarResumentTextualBreveRegion(self.datasets[2]),
-                self.miscelania.generarResumentTextualBreveRegion(self.datasets[3]),
-                self.miscelania.generarResumentTextualBreveRegion(self.datasets[4]),
-                self.miscelania.generarResumentTextualBreveRegion(self.datasets[5]),
-                self.miscelania.generarResumentTextualBreveRegion(self.datasets[6]),
-                self.miscelania.generarResumentTextualBreveRegion(self.datasets[7]),
-                self.miscelania.generarResumentTextualBreveRegion(self.datasets[8]),
-                self.miscelania.generarResumentTextualBreveRegion(self.datasets[9]),
-                self.miscelania.generarResumentTextualBreveRegion(self.datasets[10]),
-                self.miscelania.generarResumentTextualBreveRegion(self.datasets[11])]
+        res = [self.miscelania.generarResumentTextualBreveRegion(self.datasets[0],1),
+                self.miscelania.generarResumentTextualBreveRegion(self.datasets[1],2),
+                self.miscelania.generarResumentTextualBreveRegion(self.datasets[2],3),
+                self.miscelania.generarResumentTextualBreveRegion(self.datasets[3],4),
+                self.miscelania.generarResumentTextualBreveRegion(self.datasets[4],5),
+                self.miscelania.generarResumentTextualBreveRegion(self.datasets[5],6),
+                self.miscelania.generarResumentTextualBreveRegion(self.datasets[6],7),
+                self.miscelania.generarResumentTextualBreveRegion(self.datasets[7],8),
+                self.miscelania.generarResumentTextualBreveRegion(self.datasets[8],9),
+                self.miscelania.generarResumentTextualBreveRegion(self.datasets[9],10),
+                self.miscelania.generarResumentTextualBreveRegion(self.datasets[10],11),
+                self.miscelania.generarResumentTextualBreveRegion(self.datasets[11],12)]
 
 
         #Cargar Gráficas para todos los dataset
@@ -61,12 +61,12 @@ class Procesos:
                 "varEspEnd": self.graficos.variacionEspeciesEndemicas(db).to_html(),
                 "propEspEnd": self.graficos.proporcionEspeciesEndemicas(db).to_html(),
                 "acumEsp": self.graficos.curvaAcumulacionEspecies(db).to_html(),
-                "varEspecie": self.graficos.variacionConteoEspecie(db, "Spondias mombin").to_html(),
+                "varEspecie": self.graficos.variacionConteoEspecie(db, "Gonatodes albogularis").to_html(),
                 "espPeligro": self.graficos.proporcionEspeciesPeligroExtincion(db).to_html(),
                 
                 #Mapas
                 "mapEspEnd": self.cartoficos.generarMapaDistribucionEndemicas(db).to_html(),
-                "mapMuestra": self.cartoficos.generarMapaLocalizacionMuestras(db, "Spondias mombin").to_html(),
+                "mapMuestra": self.cartoficos.generarMapaLocalizacionMuestras(db, "Gonatodes albogularis").to_html(),
                 "mapRegiones": self.cartoficos.generarMapaRegiones(self.datasets).to_html(),
 
                 
@@ -84,14 +84,16 @@ class Procesos:
                 "res_dataset9": res[8],
                 "res_dataset10": res[9],
                 "res_dataset11": res[10],
-                "res_dataset12": res[11]}
+                "res_dataset12": res[11],
+                }
             )
-
+            
             print("----------------------------------------------\\\\----------------------------------------------")
             print(f"Finalizada la carga del dataset {db.nombre_archivo}")
             print("----------------------------------------------\\\\----------------------------------------------")
+        self.miscelania.mostrar_imagen_especie_colombia("Gonatodes albogularis", self.dataset)
 
-    def obternerHTML (self, ind: int = 2):
+    def obternerHTML (self, ind: int = 7):
         self.dataset = self.datasets[ind]
         self.context = self.dataset.context
         return self.context
