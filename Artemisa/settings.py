@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
-import dj_database_url
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-bb-mlwetsnmkuk6p__vq#pv3zfrrvl$$ovy)1tpr)i6_q(bjyo
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['artemisa-project.onrender.com']
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -82,9 +82,7 @@ WSGI_APPLICATION = 'Artemisa.wsgi.application'
 #    }
 #}
 
-DATABASES = {
-    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
-}
+
 
 
 # Password validation

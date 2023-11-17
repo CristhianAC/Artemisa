@@ -171,3 +171,27 @@ button{
 .imgsoli{
     height: 450px;
 }
+.dashboard{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    border-radius: 25px;
+}
+.dashboard iframe{
+    
+    border-radius: 25px;
+}
+.rectangulo{
+    width: 1080px;
+    background-color: rgb(255, 255, 255);
+    height: 50px;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+.containerR{
+    display: flex ;
+    justify-content: center;
+    margin-top: -40px;
+    
+}
