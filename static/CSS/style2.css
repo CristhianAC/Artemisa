@@ -171,15 +171,22 @@ button{
 .imgsoli{
     height: 450px;
 }
+body{
+    display: flex;
+    flex-direction: column;
+}
 .dashboard{
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 100px;
     border-radius: 25px;
+   
+    align-self: center;
 }
 .dashboard iframe{
-    
+    width: 1080px;
+    height: 540px;
     border-radius: 25px;
 }
 .rectangulo{
@@ -195,3 +202,32 @@ button{
     margin-top: -40px;
     
 }
+@media (max-width: 1080px) {
+    .container {
+      max-width: 100%;
+    }
+
+  
+    .dashboard {
+      flex-direction: column;
+      align-items: stretch;
+      margin-top: 50px;
+      width: 100%;
+    }
+  
+    .dashboard iframe {
+        width: 100% !important;
+        height: 300px;
+    }
+  
+    .rectangulo {
+        
+        width: 100%;
+     
+    }
+  
+    .form {
+      justify-content: center;
+      padding: 0;
+    }
+  }
