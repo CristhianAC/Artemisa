@@ -216,8 +216,8 @@ body{
     }
   
     .dashboard iframe {
-        width: 100% !important;
-        height: 300px;
+        width: 500px !important;
+        height: 350px;
     }
   
     .rectangulo {
