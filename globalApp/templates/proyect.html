@@ -27,6 +27,9 @@
     </div>
     
     <div class="modelo">
+      {% if showImage %}
+        <image src='{% static "img/modelo.png" %}}'/>
+      {% endif %}
       <form method="POST" class = "formGen">
       {% block content %}
         {% csrf_token %}

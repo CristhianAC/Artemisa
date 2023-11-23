@@ -13,9 +13,9 @@ import matplotlib as mpl
 
 import random
 
-from ClasesGlobales.VariablesFuncionamiento import VariablesFuncionamiento
-from ClasesGlobales.ConectorBaseDatos import ConectorBaseDatos
-from ConversionDatos.ConversionDatos import ConversionDatos
+from .ClasesGlobales.VariablesFuncionamiento import VariablesFuncionamiento
+from .ClasesGlobales.ConectorBaseDatos import ConectorBaseDatos
+from .ConversionDatos.ConversionDatos import ConversionDatos
 
 conector = ConectorBaseDatos()
 conversor = ConversionDatos()
@@ -160,6 +160,7 @@ def generarCoordenadas (coordenadas: list, perimetro_seleccion: tuple, rango_dis
         longitud = random.uniform(rang_lon[0], rang_lon[1])
         
         # Obtener Ecosistema de la coordenada
+        '''
         x, y = conversor.convertirCoordenadasAPixeles(longitud, latitud) #Calcular pixeles
         color, tipo_ecosistema = conversor.obtenerColorTipoEcosistema(imagen, x, y) #Obtener Color y Tipo de Ecosistema
         
@@ -178,7 +179,7 @@ def generarCoordenadas (coordenadas: list, perimetro_seleccion: tuple, rango_dis
         ecosistema = conversor.lista_ecosistemas[tipo_ecosistema][color]
         if any([ecosistema == ecosistema_no_admitido for ecosistema_no_admitido in ecosistemas_no_admitidos]):
             continue
-        
+        '''
         # Evaluar distancia con todos los puntos
         evaluacion_distancias = []
         for coord in coordenadas:
