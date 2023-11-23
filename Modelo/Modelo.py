@@ -389,7 +389,8 @@ def obtenerImagenResultado (dataset, perimetro_seleccion):
         plt.colorbar()
         plt.title(title, fontweight = 'bold')
         
-        plt.savefig('modelo.png')
+        direccion_imagen = f'{os.path.dirname(os.path.dirname(__file__))}\static\img\modelo.png'
+        plt.savefig(direccion_imagen)
         
     distr_rf = rasterio.open(f"{conversor.direccion_salidas_analisis_datos}/Modelo/rf-images/probability_1.tif").read(1)
     distr_et = rasterio.open(f"{conversor.direccion_salidas_analisis_datos}/Modelo/et-images/probability_1.tif").read(1)
@@ -407,5 +408,3 @@ def generarModelo (nombre_especie):
     train_xs_entrenamiento, train_y_entrenamiento, train_xs_prueba, train_y_prueba = construirConjuntosDatos(train_xs, train_y, 0.8)
     generarImagenesModelo(train_xs_entrenamiento, train_y_entrenamiento, target_xs, train_xs_prueba, train_y_prueba, raster_info)
     obtenerImagenResultado(dataset, perimetro_seleccion)
-    
-generarModelo('Icterus nigrogularis')
