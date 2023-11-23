@@ -27,10 +27,10 @@
     </div>
     
     <div class="modelo">
-      <form method="POST">
+      <form method="POST" class = "formGen">
       {% block content %}
         {% csrf_token %}
-          {{form.as_p}}
+          <small class="formModelo">{{form}}</small>
           <button type="submit", name= "ejecutar">ejecutar</button>
         {% endblock %}
       </form>

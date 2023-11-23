@@ -211,8 +211,37 @@ body{
     align-self: center;
     margin-bottom: 100px;
 }
-.modelo p{
+.formModelo{
+    color:black;
+    
+    
+    
+}
+.formGen{
+    margin-bottom: 500px;
+}
+.formModelo label{
+    font-size: 30px;
+    font-weight: bolder;
+    margin-bottom: 50px;
+    margin-right: 25px;
+}
+.formModelo input{
+    background-color: whitesmoke;
+    border-radius: 15px;
     color: black;
+    margin-bottom: 100px;
+    height: 25px;
+    width: 500px;
+    margin-right: 25px;
+}
+form button{
+    color: black;
+    background-color: whitesmoke;
+    border-radius: 15px;
+    margin-bottom: 100px;
+    height: 40px;
+    width: 100px;
 
 }
 @media (max-width: 1080px) {
