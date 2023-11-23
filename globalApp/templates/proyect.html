@@ -25,5 +25,17 @@
     <div class="containerR">
       <div class="rectangulo"></div>
     </div>
+    
+    <div class="modelo">
+      <form method="POST">
+      {% block content %}
+        {% csrf_token %}
+          {{form.as_p}}
+          <button type="submit", name= "ejecutar">ejecutar</button>
+        {% endblock %}
+      </form>
+    </div>
+    
+    
   </body>
 </html>

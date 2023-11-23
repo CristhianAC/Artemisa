@@ -202,6 +202,19 @@ body{
     margin-top: -40px;
     
 }
+.modelo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    border-radius: 25px;
+    align-self: center;
+    margin-bottom: 100px;
+}
+.modelo p{
+    color: black;
+
+}
 @media (max-width: 1080px) {
     .container {
       max-width: 100%;
@@ -230,4 +243,5 @@ body{
       justify-content: center;
       padding: 0;
     }
+    
   }
