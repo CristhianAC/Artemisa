@@ -8,15 +8,21 @@ import os
 def index(request):
     return render(request,"index.html")
 def proyect(request):
-    showimage = False
+    showimage = True
     if request.method == 'POST':
         form = modelEjecute(request.POST)
         if form.is_valid():
-            modelo = Modelo(form.cleaned_data['name'])
-            showimage = True
+            try:
+                modelo = Modelo(form.cleaned_data['name'])
+                showimage = True
+            except Exception as e:
+                print(e)
+                showimage = False
         return HttpResponseRedirect('/ArtemisaProyect')
     else:
         form = modelEjecute()
-        showimage = False
-    context = {'form': form, 'showimage': showimage}
+        
+    
+    context = {'form': form, 'showImage': showimage}
+    print(context)
     return render(request, "proyect.html", context)

@@ -27,18 +27,21 @@
     </div>
     
     <div class="modelo">
-      {% if showImage %}
-        <image src='{% static "img/modelo.png" %}}'/>
-      {% endif %}
+      
+      
       <form method="POST" class = "formGen">
-      {% block content %}
+        {% block content %}
+        
         {% csrf_token %}
           <small class="formModelo">{{form}}</small>
           <button type="submit", name= "ejecutar">ejecutar</button>
-        {% endblock %}
+          {% endblock %}
       </form>
     </div>
     
+    {% if showImage %}
+      <img src="{% static '/img/modelo.png' %}" class="imagenP">
+      {% endif %}
     
   </body>
 </html>

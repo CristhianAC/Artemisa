@@ -217,11 +217,11 @@ def obtenerDataset (nombre_especie):
     # Generación de un Perímetro de Selección
     perimetro_seleccion = ((min(datos['lat']), max(datos['lat'])), (min(datos['lon']), max(datos['lon'])))
     print(f'{perimetro_seleccion}')
-
+    
     # Lectura de la imagen de Ecosistemas
-    res_lectura = conversor.lector_archivos.leerImagen ('E_ECCMC_Ver21_100K' , 'png')
-    imagen = res_lectura['datos archivo']
-
+    
+    imagen = None
+    
     # Generación de Datos de Ausencia
     cantidad_ausencias = len(res_consulta['resultado'])   # Proporción 1:1 con datos de presencia
 
@@ -390,7 +390,7 @@ def obtenerImagenResultado (dataset, perimetro_seleccion):
         plt.colorbar()
         plt.title(title, fontweight = 'bold')
         
-        direccion_imagen = f'{os.path.dirname(os.path.dirname(__file__))}\static\img\modelo.png'
+        direccion_imagen = f'{os.path.dirname(os.path.dirname(__file__))}/static/img/modelo.png'
         plt.savefig(direccion_imagen)
         
     distr_rf = rasterio.open(f"{conversor.direccion_salidas_analisis_datos}/Modelo/rf-images/probability_1.tif").read(1)
