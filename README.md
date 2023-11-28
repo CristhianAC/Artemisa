@@ -11,8 +11,8 @@
     pip install django
     pip install plotly
     pip install pandas
-    pip install geopandas
-    pip install openai
+    
+    
     
     ```
 - Clonar este repositorio con el comando:  git clone 
