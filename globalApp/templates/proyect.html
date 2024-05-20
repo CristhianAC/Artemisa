@@ -26,22 +26,12 @@
       <div class="rectangulo"></div>
     </div>
     
-    <div class="modelo">
-      
-      
-      <form method="POST" class = "formGen">
-        {% block content %}
-        
-        {% csrf_token %}
-          <small class="formModelo">{{form}}</small>
-          <button type="submit", name= "ejecutar">ejecutar</button>
-          {% endblock %}
-      </form>
-    </div>
     
-    {% if showImage %}
-      <img src="{% static '/img/modelo.png' %}" class="imagenP">
-      {% endif %}
+      
+      
+      
+    
+   
     
   </body>
 </html>
