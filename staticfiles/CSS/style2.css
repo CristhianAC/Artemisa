@@ -18,7 +18,7 @@ h1 h2{
     padding-bottom: 25px;
 }
 body{
-    background-image: var(--background), url('../img/paisaje2.jpg');
+    background-image: var(--background), url('paisaje2.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -200,6 +200,9 @@ body{
     display: flex ;
     justify-content: center;
     margin-top: -40px;
+    background-color: whitesmoke;
+    border-radius: 45px;
+    width: auto;
     
 }
 .modelo{
